@@ -12,7 +12,7 @@ def main():
     example_data = {
         "CustomerNbr": "123456",
         "ContractNbr": "78910",
-        "CustLongString1": "This is an example of a long string, written by the user.",
+        "CustLongString": "This is an example of a long string, written by the user.",
         "CustEntryText1": "That first text has been entered by the user.",
         "CustEntryText2": "That second text has also been entered by the user.",
         "DropdownList": ["Option1", "Option2", "Option3", "Option4"],  # Dropdown options
