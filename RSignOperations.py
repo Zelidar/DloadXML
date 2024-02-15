@@ -4,16 +4,19 @@ import requests
 # Fetching my RPost test credentials
 from GettingRSignAuthToken import GetAuthToken, BaseURL
 
+import base64
+import xml.etree.ElementTree as ET
+
 import time
 def SimCall(SimCallNumber):
     time.sleep(5)
     return SimCallNumber
 
+
 def GetTemplateData():
-    GetTemplateRuleList = '/api/V1/Template/GetTemplateRuleList'
-    
+    GetEndpointString = '/api/V1/Template/GetTemplateRuleList'
     headers = {'AuthToken': GetAuthToken()}
-    query = BaseURL + GetTemplateRuleList
+    query = BaseURL + GetEndpointString
     AuthResponse = requests.get(query, headers=headers)
     myData = AuthResponse.json()
 
@@ -33,23 +36,81 @@ def GetTemplateData():
     return pretty_json
 
 
-def GetTemplateInfo(TemplateCode):
-    GetTemplateInfoEndpoint = '/api/V1/Template/GetTemplateInfo/' + str(TemplateCode)
+def GetEnvelopeInfo():
+    from datetime import datetime, timedelta
+    # Get the current date and time
+    current_time = datetime.now()
+    # Calculate the start date as 2 weeks before the current date
+    start_date = current_time - timedelta(weeks=2)
+    # Format the dates in the required format (mm/dd/YYYY)
+    start_date_str = start_date.strftime("%m/%d/%Y")
+    end_date_str = current_time.strftime("%m/%d/%Y")
+    # Define the payload with the calculated start and end dates
+    payload = {
+        "StartDate": start_date_str,
+        "EndDate": end_date_str,
+        "Period": 24,
+        "MasterEnvelopeCode": "",
+        "SenderEmail": "zaid.el-hoiydi_tc@frama.com",
+        "SignerEmail": "",
+        "Status": "Completed;Terminated",
+        "DetailOrSummary": "Summary"
+    }
 
+    GetEndpointString = '/api/V1/Envelope/GetEnvelopeStatusInfo'
     headers = {'AuthToken': GetAuthToken()}
-    query = BaseURL + GetTemplateInfoEndpoint
+    query = BaseURL + GetEndpointString
+    response = requests.post(query, headers=headers, data=payload)
+    myData = response.json()
+    return myData
+
+
+def GetUserData(EnvelopeCode, userElements):
+    GetEndpointString = '/api/V1/Manage/GetDownloadeDataByCode/' + str(EnvelopeCode)
+    headers = {'AuthToken': GetAuthToken()}  # Ensure GetAuthToken() is defined elsewhere
+    query = BaseURL + GetEndpointString
+    response = requests.get(query, headers=headers)
+    json_data = response.json()
+    
+    # Extract the Base64-encoded XML data
+    base64_encoded_xml = json_data.get('Base64FileData', '')
+    elements_dict = {}
+    
+    if base64_encoded_xml:
+        # Decode the Base64-encoded XML data
+        xml_data = base64.b64decode(base64_encoded_xml).decode('utf-8')
+        # Parse the XML data
+        root = ET.fromstring(xml_data)
+        
+        # Retrieve the elements based on the corrected understanding
+        for control in root.iter('Control'):
+            label = control.attrib.get('label')
+            if label in userElements:
+                text_value = control.attrib.get('text')
+                if label not in elements_dict:
+                    elements_dict[label] = []
+                elements_dict[label].append({'label': label, 'Text': text_value})
+    else:
+        # Handle cases where Base64FileData is not present or empty
+        elements_dict = {name: [] for name in userElements}  # Using empty list for consistency
+    
+    return elements_dict
+
+
+def GetTemplateInfo(TemplateCode):
+    GetEndpointString = '/api/V1/Template/GetTemplateInfo/' + str(TemplateCode)
+    headers = {'AuthToken': GetAuthToken()}
+    query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
     myData = response.json()
-
     return myData
 
 
 def GetRolesInfo(TemplateCode):
     # Endpoint with the TemplateCode
-    GetTemplateInfoEndpoint = '/api/V1/Template/GetTemplateInfo/' + str(TemplateCode)
-
+    GetEndpointString = '/api/V1/Template/GetTemplateInfo/' + str(TemplateCode)
     headers = {'AuthToken': GetAuthToken()}
-    query = BaseURL + GetTemplateInfoEndpoint
+    query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
     myData = response.json()
 
@@ -69,6 +130,16 @@ def GetRolesInfo(TemplateCode):
 
     # Returning the list of RoleIDs
     return roles_info
+
+
+# def GetXMLdata(EnvelopeCode):
+#     GetEndpointString = '/api/V1/Template/GetDownloadeDataByCode/' + str(EnvelopeCode)
+#     headers = {'AuthToken': GetAuthToken()}
+#     query = BaseURL + GetEndpointString
+#     response = requests.get(query, headers=headers)
+#     myData = response.json()
+
+#     return myData
 
 
 def SendEnvelope(email, name):

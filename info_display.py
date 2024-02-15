@@ -37,9 +37,9 @@ class DisplayInfo:
 
             self.text_widget.config(state=tk.DISABLED)  # Disable editing
 
-    def display_info(self, name, email, month, CrmCustNbr, CrmContractNbr):
+    def display_info(self, name, email, CrmCustNbr, CrmContractNbr):
         # Add new entry
-        self.user_entries.append(f"Name: {name}, Month: {month}, Email: {email}, CrmCustNbr: {CrmCustNbr}, CrmContractNbr: {CrmContractNbr}")
+        self.user_entries.append(f"Name: {name}, Email: {email}, CrmCustNbr: {CrmCustNbr}, CrmContractNbr: {CrmContractNbr}")
 
         # Create the window if it does not exist
         if not self.info_window or not self.info_window.winfo_exists():

@@ -2,7 +2,7 @@ import tkinter as tk
 import random
 from datetime import datetime
 from tkinter import ttk
-from event_handling import handle_submission
+from event_handling import handle_submission, fetch_user_data
 
 def get_current_datetime():
     now = datetime.now()
@@ -17,7 +17,7 @@ class UserInputApp:
     def __init__(self, root, display_info):
         self.display_info = display_info
         self.root = root
-        self.root.title("Membership Application")
+        self.root.title("Personal Data Collection")
 
         # Load and display logo
         self.logo = tk.PhotoImage(file="Logo.png")
@@ -55,18 +55,6 @@ class UserInputApp:
         self.CrmCustString_entry.insert(0, get_current_datetime())  # Insert the current date and time
         self.CrmCustString_entry.pack()
 
-        # Month Dropdown
-        tk.Label(self.root, text="Month to begin:").pack()
-        self.month_var = tk.StringVar()
-        self.month_combo = ttk.Combobox(self.root, textvariable=self.month_var, 
-                                        values=["January", "February", "March", 
-                                                "April", "May", "June", "July", 
-                                                "August", "September", "October", 
-                                                "November", "December"])
-        self.month_combo.pack()
-        # Set default choice
-        self.month_var.set("January")
-
         # Submission Text
         submission_text = "Once you press the submit button, a membership application will be sent to the email you have entered. Please sign it."
         tk.Label(self.root, text=submission_text, wraplength=300).pack()
@@ -74,6 +62,14 @@ class UserInputApp:
         # Submit Button
         self.submit_button = tk.Button(self.root, text="Send me the contract...", command=self.submit)
         self.submit_button.pack()
+
+        # Data Fetching Text
+        data_fetching_text = "What the log window. Once signed you can fetch the user data."
+        tk.Label(self.root, text=data_fetching_text, wraplength=300).pack()
+
+        # Fetch User Data Button
+        self.fetch_data_button = tk.Button(self.root, text="Fetch user data...", command=fetch_user_data)
+        self.fetch_data_button.pack()
 
         # Bind Enter key to the submit function
         self.root.bind("<Return>", self.submit)
@@ -84,7 +80,6 @@ class UserInputApp:
                           self.CrmCustNbr_entry.get(), 
                           self.CrmContractNbr_entry.get(), 
                           self.CrmCustString_entry.get(), 
-                          self.month_var.get(),
                           self.display_info)
         self.DefaultEntries()
 
@@ -97,4 +92,3 @@ class UserInputApp:
         self.CrmContractNbr_entry.insert(0, generate_number())  # Re-insert the random number
         self.CrmCustString_entry.delete(0, tk.END)
         self.CrmCustString_entry.insert(0, get_current_datetime())  # Re-insert the current date and time
-        self.month_combo.set('January')
