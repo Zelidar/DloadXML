@@ -2,12 +2,12 @@ import tkinter as tk
 from tkinter import ttk
 import datetime
 
-class CollectedInfo:
+class CollectedUserInfo:
     def __init__(self, root):
         self.root = root
-        self.create_info_window()
+    #     self.create_user_info_window()
 
-    def create_info_window(self):
+    def create_user_info_window(self):
         self.info_window = tk.Toplevel(self.root)
         self.info_window.title("Collected Information")
         
@@ -28,6 +28,7 @@ class CollectedInfo:
         
         # Configure tag for bold text to use the same monospaced font
         self.text_widget.tag_configure('bold', font=('Courier', 10, 'bold'))
+
 
     def update_info_display(self, data):
         # Enable the text widget to insert data

@@ -60,21 +60,24 @@ class UserInputApp:
         tk.Label(self.root, text=submission_text, wraplength=300).pack()
 
         # Submit Button
-        self.submit_button = tk.Button(self.root, text="Send me the contract...", command=self.submit)
+        self.submit_button = tk.Button(self.root, text="Send me the contract...", command=self.submit1)
         self.submit_button.pack()
+        # Bind Enter key to the submit function
+        self.root.bind("<Return>", self.submit1)
+
 
         # Data Fetching Text
-        data_fetching_text = "What the log window. Once signed you can fetch the user data."
+        data_fetching_text = "Whatch the log window. Once signed, you can collect user data."
         tk.Label(self.root, text=data_fetching_text, wraplength=300).pack()
 
         # Fetch User Data Button
-        self.fetch_data_button = tk.Button(self.root, text="Fetch user data...", command=fetch_user_data)
+        self.fetch_data_button = tk.Button(self.root, 
+                                           text="Fetch user data...", 
+                                           command=self.submit2)
         self.fetch_data_button.pack()
 
-        # Bind Enter key to the submit function
-        self.root.bind("<Return>", self.submit)
 
-    def submit(self, event=None):
+    def submit1(self, event=None):
         handle_submission(self.name_entry.get(), 
                           self.email_entry.get(), 
                           self.CrmCustNbr_entry.get(), 
@@ -82,6 +85,11 @@ class UserInputApp:
                           self.CrmCustString_entry.get(), 
                           self.display_info)
         self.DefaultEntries()
+
+
+    def submit2(self, event=None):
+        fetch_user_data(self.root)
+
 
     def DefaultEntries(self):
         # self.name_entry.delete(0, tk.END) # Uncomment to delete previous value

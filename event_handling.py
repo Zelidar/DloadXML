@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox  # Import messagebox explicitly
 from info_display import DisplayInfo
+from collected_info import CollectedUserInfo
 from RSignOperations import GetUserData, GetEnvelopeInfo
 
 import re
@@ -32,7 +33,7 @@ def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, dis
         messagebox.showerror("Error", "Invalid submission details")
 
 
-def fetch_user_data():
+def fetch_user_data(window):
     try:
         EnvelopeCode = "03615419-8101-BFFD-9105-FDEF"
         userElements = [
@@ -48,7 +49,10 @@ def fetch_user_data():
             'Widowed'
         ]
         result = GetUserData(EnvelopeCode, userElements)
-        print(result)
+        userInfoWindow = CollectedUserInfo(window)
+        userInfoWindow.create_user_info_window()
+        userInfoWindow.update_info_display(result)
+        # print(result)
     except Exception as e:
         print("Error with user data fetching:", e)
         messagebox.showerror("Error", "GetUserData API call failed")

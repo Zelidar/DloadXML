@@ -35,70 +35,15 @@ SentDate  ¦  Status  ¦  EnvelopeCode  ¦  SenderName  ¦  Subject
 
 ---
 
-'<Envelope id="b4d8ffbe-9d4d-4678-846c-f8c85686dfb0" EnvelopeCode="03615419-8101-BFFD-9105-FDEF">
-  <EnvelopeStatus>Completed</EnvelopeStatus>
-  <DeclineReason></DeclineReason>
-  <TemplateCode>62673</TemplateCode>
-  <ReferenceCode></ReferenceCode>
-  <ReferenceEmail></ReferenceEmail>
-  <Recipients ID="d5111684-5b83-4ead-b7b8-be070c59001a" Name="Zaid ElHoiydiTC" EmailAddress="zaid.el-hoiydi_tc@frama.com" Type="Sender" DeliveryMode="" CountryCode="" DialCode="" Mobile="" IPAddress="" />
-  <Recipients ID="ad468bb0-2905-40e0-af10-b3172b9fa318" Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Type="Signer" DeliveryMode="" CountryCode="" DialCode="" Mobile="" IPAddress="" />
-  <Recipients ID="d4786cd6-c66b-4a34-969e-76f4a938ee5a" Name="Company Admin" EmailAddress="zaid.el-hoiydi_tc@frama.com" Type="Signer" DeliveryMode="" CountryCode="" DialCode="" Mobile="" IPAddress="" />
-  <Documents>
-    <Documents ID="659aa2ec-5cc8-44d5-9c0e-a53c18d83501" Name="DloadXML.docx">
-      <Controls>
-        <Control ID="178de790-1729-4514-a521-0040c6db47e5" Name="Radio" ControlHtmlID="radioControl10046" label="Single" text="False" OriginalValue="true" required="true" Height="18" Width="18" PageNo="1" XCoordinate="480" YCoordinate="834" ZCoordinate="457" TemplateControl="radioControl10046_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="46db9e6a-fea9-4f65-8214-1516ede997fc" Name="Label" ControlHtmlID="labelControl71858" label="CustomerNbr" text="" OriginalValue="" required="true" Height="28" Width="276" PageNo="1" XCoordinate="190" YCoordinate="536" ZCoordinate="745" TemplateControl="labelControl71858_">
-          <Signer Name="" EmailAddress="" Mobile="" />
-        </Control>
-        <Control ID="5652a57c-435a-47f9-8cb1-18ef67575f2c" Name="DropDown" ControlHtmlID="DropDownControl45001" label="Dropdown control assigned to Customer" text="Black" OriginalValue="" required="false" Height="23" Width="259" PageNo="1" XCoordinate="194" YCoordinate="830" ZCoordinate="456" TemplateControl="DropDownControl45001_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="decaaf0a-9cb6-43c4-90d2-286d84de5d89" Name="Radio" ControlHtmlID="radioControl84710" label="Widowed" text="False" OriginalValue="false" required="true" Height="18" Width="18" PageNo="1" XCoordinate="482" YCoordinate="903" ZCoordinate="389" TemplateControl="radioControl84710_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="c33489b5-3083-4918-b173-29b790c811a2" Name="Text" ControlHtmlID="textControl55820" label="CustLongString2" text="CustLongString2 is for the user to enter, empty in this example." OriginalValue="" required="true" Height="31" Width="597" PageNo="1" XCoordinate="189" YCoordinate="668" ZCoordinate="610" TemplateControl="textControl55820_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="e732edc0-7968-4583-8380-6b994eb76412" Name="Signature" ControlHtmlID="signControl34916" label="Signature" text="Signed" OriginalValue="" required="true" Height="36" Width="291" PageNo="1" XCoordinate="147" YCoordinate="989" ZCoordinate="281" TemplateControl="signControl34916_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="2ea4edfd-4301-445d-9cdb-875a6486e26d" Name="DateTimeStamp" ControlHtmlID="dateTimeStampControl33297" label="Date &amp; Time Stamp" text="15/02/2024 07:19 UTC" OriginalValue="" required="true" Height="17" Width="286" PageNo="1" XCoordinate="149" YCoordinate="1070" ZCoordinate="222" TemplateControl="dateTimeStampControl33297_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="ad53fc56-e3b7-4715-9768-88ce8ce2dff2" Name="Label" ControlHtmlID="labelControl50199" label="ContractNbr" text="" OriginalValue="" required="true" Height="26" Width="309" PageNo="1" XCoordinate="477" YCoordinate="537" ZCoordinate="746" TemplateControl="labelControl50199_">
-          <Signer Name="" EmailAddress="" Mobile="" />
-        </Control>
-        <Control ID="6656e5b6-62d1-4d2b-b369-9626f83adca4" Name="Radio" ControlHtmlID="radioControl33350" label="Married" text="True" OriginalValue="false" required="true" Height="18" Width="18" PageNo="1" XCoordinate="481" YCoordinate="872" ZCoordinate="420" TemplateControl="radioControl33350_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="44c9d974-750c-4c59-9efe-aa023a187667" Name="Text" ControlHtmlID="textControl41355" label="CustEntryText2" text="CustEntryText2 with some text" OriginalValue="" required="true" Height="27" Width="311" PageNo="1" XCoordinate="476" YCoordinate="736" ZCoordinate="547" TemplateControl="textControl41355_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="65c1d546-ad47-4188-9049-af3c37860629" Name="Label" ControlHtmlID="labelControl91878" label="Single" text="" OriginalValue="" required="true" Height="20" Width="256" PageNo="1" XCoordinate="511" YCoordinate="833" ZCoordinate="456" TemplateControl="labelControl91878_">
-          <Signer Name="" EmailAddress="" Mobile="" />
-        </Control>
-        <Control ID="98fc2337-b3ff-47c0-aa4a-bf778b5b92de" Name="Signature" ControlHtmlID="signControl97339" label="Signature" text="Signed" OriginalValue="" required="true" Height="36" Width="215" PageNo="1" XCoordinate="499" YCoordinate="987" ZCoordinate="286" TemplateControl="signControl97339_Company">
-          <Signer Name="Company Admin" EmailAddress="zaid.el-hoiydi_tc@frama.com" Mobile="" />
-        </Control>
-        <Control ID="d44e5f7a-e4c5-465b-9d87-dc5cb41d8946" Name="Label" ControlHtmlID="labelControl25425" label="Married" text="" OriginalValue="" required="true" Height="20" Width="256" PageNo="1" XCoordinate="511" YCoordinate="869" ZCoordinate="420" TemplateControl="labelControl25425_">
-          <Signer Name="" EmailAddress="" Mobile="" />
-        </Control>
-        <Control ID="79956d7a-53fc-4317-96ce-e6ba948e575d" Name="Label" ControlHtmlID="labelControl17328" label="Widowed" text="" OriginalValue="" required="true" Height="22" Width="253" PageNo="1" XCoordinate="511" YCoordinate="903" ZCoordinate="384" TemplateControl="labelControl17328_">
-          <Signer Name="" EmailAddress="" Mobile="" />
-        </Control>
-        <Control ID="ccb0fadd-83c3-4f8c-86cb-e90cdbdd28e6" Name="DateTimeStamp" ControlHtmlID="dateTimeStampControl56693" label="Date &amp; Time Stamp" text="15/02/2024 07:20 UTC" OriginalValue="" required="true" Height="17" Width="122" PageNo="1" XCoordinate="503" YCoordinate="1071" ZCoordinate="221" TemplateControl="dateTimeStampControl56693_Company">
-          <Signer Name="Company Admin" EmailAddress="zaid.el-hoiydi_tc@frama.com" Mobile="" />
-        </Control>
-        <Control ID="595cad92-f052-4c6a-8566-e9b91bd5a511" Name="Text" ControlHtmlID="textControl47496" label="CustEntryText1" text="CustEntryText1 with some text" OriginalValue="" required="true" Height="27" Width="277" PageNo="1" XCoordinate="189" YCoordinate="737" ZCoordinate="546" TemplateControl="textControl47496_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-        <Control ID="53e0078f-b064-41bb-9212-eb023382af97" Name="Text" ControlHtmlID="textControl59562" label="CustLongString1" text="CustLongString1 could be prefilled, but isn\'t when manually processed." OriginalValue="" required="true" Height="27" Width="594" PageNo="1" XCoordinate="189" YCoordinate="604" ZCoordinate="678" TemplateControl="textControl59562_Customer">
-          <Signer Name="Zaid (customer)" EmailAddress="zaid.el-hoiydi@frama.com" Mobile="" />
-        </Control>
-      </Controls>
-    </Documents>
-  </Documents>
-</Envelope>'
+{
+'CustomerNbr': [{'Text': ''}],
+'ContractNbr': [{'Text': ''}],
+'Dropdown control assigned to Customer': [{'Text': 'Black'}],
+'CustLongString1': [{'Text': "CustLongString1 could be prefilled, but isn't when manually processed."}],
+'CustLongString2': [{'Text': 'CustLongString2 is for the user to enter, empty in this example.'}],
+'CustEntryText1': [{'Text': 'CustEntryText1 with some text'}],
+'CustEntryText2': [{'Text': 'CustEntryText2 with some text'}],
+'Single': [{'Text': 'False'}, {'Text': ''}],
+'Married': [{'Text': ''}, {'Text': 'True'}],
+'Widowed': [{'Text': 'False'}, {'Text': ''}],
+}

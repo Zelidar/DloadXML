@@ -71,29 +71,26 @@ def GetUserData(EnvelopeCode, userElements):
     query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
     json_data = response.json()
-    
     # Extract the Base64-encoded XML data
     base64_encoded_xml = json_data.get('Base64FileData', '')
     elements_dict = {}
-    
     if base64_encoded_xml:
         # Decode the Base64-encoded XML data
         xml_data = base64.b64decode(base64_encoded_xml).decode('utf-8')
         # Parse the XML data
         root = ET.fromstring(xml_data)
         
-        # Retrieve the elements based on the corrected understanding
         for control in root.iter('Control'):
             label = control.attrib.get('label')
             if label in userElements:
                 text_value = control.attrib.get('text')
                 if label not in elements_dict:
                     elements_dict[label] = []
-                elements_dict[label].append({'label': label, 'Text': text_value})
+                # elements_dict[label].append({'Name': label, 'Text': text_value})
+                elements_dict[label].append(text_value)
     else:
         # Handle cases where Base64FileData is not present or empty
         elements_dict = {name: [] for name in userElements}  # Using empty list for consistency
-    
     return elements_dict
 
 
