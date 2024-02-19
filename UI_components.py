@@ -2,7 +2,7 @@ import tkinter as tk
 import random
 from datetime import datetime
 from tkinter import ttk
-from event_handling import handle_submission, fetch_user_data
+from event_handling import handle_submission, fetch_user_data, fetch_envelope_status
 
 def get_current_datetime():
     now = datetime.now()
@@ -14,8 +14,8 @@ def generate_number():
     return f'00{number:4}'  # Format the number as a string with leading zeros
 
 class UserInputApp:
-    def __init__(self, root, display_info):
-        self.display_info = display_info
+    def __init__(self, root, window_log):
+        self.window_log = window_log
         self.root = root
         self.root.title("Personal Data Collection")
 
@@ -58,36 +58,44 @@ class UserInputApp:
         # Submission Text
         submission_text = "Once you press the submit button, a contract will be sent to the email you have entered. Please provide the requested information, and sign it."
         tk.Label(self.root, text=submission_text, wraplength=300).pack()
-
         # Submit Button
-        self.submit_button = tk.Button(self.root, text="Send the contract...", command=self.submit1)
+        self.submit_button = tk.Button(self.root, text="Send the contract...", command=self.SubmitContract)
         self.submit_button.pack()
         # Bind Enter key to the submit function
-        self.root.bind("<Return>", self.submit1)
+        self.root.bind("<Return>", self.SubmitContract)
 
+        # Envelope Status Fetching Text
+        env_status_fetching_text = "Whatch the log window, when you click it will show you the latest envelope status."
+        tk.Label(self.root, text=env_status_fetching_text, wraplength=300).pack()
+        # Fetch User Data Button
+        self.env_status_fetch_data_button = tk.Button(self.root, 
+                                           text="Seeking envelope status...", 
+                                           command=self.GettingEnvStatus)
+        self.env_status_fetch_data_button.pack()
 
         # Data Fetching Text
-        data_fetching_text = "Whatch the log window. Once signed, you can collect user data from the envelope located in the RPost clound."
+        data_fetching_text = "Whatch the log window. Once signed, you can collect user data from the envelope located in the RPost cloud."
         tk.Label(self.root, text=data_fetching_text, wraplength=300).pack()
-
         # Fetch User Data Button
         self.fetch_data_button = tk.Button(self.root, 
-                                           text="Fetch user data...", 
-                                           command=self.submit2)
+                                           text="Fetching user data...", 
+                                           command=self.GettingUserData)
         self.fetch_data_button.pack()
 
 
-    def submit1(self, event=None):
+    def SubmitContract(self, event=None):
         handle_submission(self.name_entry.get(), 
                           self.email_entry.get(), 
                           self.CrmCustNbr_entry.get(), 
                           self.CrmContractNbr_entry.get(), 
                           self.CrmCustString_entry.get(), 
-                          self.display_info)
+                          self.window_log)
         self.DefaultEntries()
 
+    def GettingEnvStatus(self, event=None):
+        fetch_envelope_status(self.window_log)
 
-    def submit2(self, event=None):
+    def GettingUserData(self, event=None):
         fetch_user_data(self.root)
 
 

@@ -101,6 +101,14 @@ def GetTemplateInfo(TemplateCode):
     return response.json()
 
 
+def GetEnvelopeStatus(EnvelopeCode):
+    GetEndpointString = '/api/V1/Envelope/GetEnvelopeStatus/' + str(EnvelopeCode)
+    headers = {'AuthToken': GetAuthToken()}
+    query = BaseURL + GetEndpointString
+    response = requests.get(query, headers=headers)
+    return response.json()
+
+
 def GetRolesInfo(TemplateCode):
     # Endpoint with the TemplateCode
     GetEndpointString = '/api/V1/Template/GetTemplateInfo/' + str(TemplateCode)

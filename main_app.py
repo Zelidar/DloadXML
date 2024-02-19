@@ -1,14 +1,13 @@
 import tkinter as tk
 from UI_components import UserInputApp
-from window_logging import DisplayInfo
+from window_logging import WindowInfoLog
 
 EnvelopeId = None
 
 def main():
-    root = tk.Tk()
-
-    display_info = DisplayInfo(root) # Create the display info window
-    UserInputApp(root, display_info)
+    root = tk.Tk() # Create the UI window instance
+    window_log = WindowInfoLog(root) # Create the info log window instance
+    UserInputApp(root, window_log) # Create the UI window
     
     root.mainloop()
 

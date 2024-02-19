@@ -1,7 +1,7 @@
 import tkinter as tk
 import datetime
 
-class DisplayInfo:
+class WindowInfoLog:
     def __init__(self, root):
         self.root = root  # Store root for later use
         self.info_window = None  # Delay creation
@@ -29,7 +29,7 @@ class DisplayInfo:
             close_button.pack()
 
 
-    def display_info_window(self, name, email, CrmCustNbr, CrmContractNbr):
+    def window_log_window(self, name, email, CrmCustNbr, CrmContractNbr):
         self.user_entries.append(f"Name: {name}, Email: {email}, CrmCustNbr: {CrmCustNbr}, CrmContractNbr: {CrmContractNbr}")
         self.ensure_info_window_created()  # Ensure the window and widgets are created before updating
         self.update_display()
@@ -66,3 +66,23 @@ class DisplayInfo:
 
             self.text_widget.config(state=tk.DISABLED)  # Disable editing
 
+
+    def AddTextInWindowLog(self, message):
+        """
+        Adds a message to the text widget with a timestamp prefix.
+        Parameters:
+        - message: The message string to be added.
+        """
+        self.ensure_info_window_created()  # Ensure the window and widgets are created
+        if self.text_widget:
+            self.text_widget.config(state=tk.NORMAL)  # Enable editing
+
+            # Format the message with the current timestamp
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            timestamped_message = "[{}] {}\n".format(timestamp, message)
+
+            # Insert the timestamped message into the text widget
+            self.text_widget.insert(tk.END, timestamped_message)
+            self.text_widget.see(tk.END)
+
+            self.text_widget.config(state=tk.DISABLED)  # Disable editing

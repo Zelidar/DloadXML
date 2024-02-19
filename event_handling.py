@@ -1,22 +1,20 @@
-import tkinter as tk
 from tkinter import messagebox  # Import messagebox explicitly
-from window_logging import DisplayInfo
 from collecting_user_info import CollectedUserInfo
-from RSignOperations import GetUserData, GetEnvelopeInfo, SendDynEnvelope, SimCall
+from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall
 from input_validation import UserInputValidator
 import threading
 from file_logging import log_message
 
 validator = UserInputValidator()
 
-def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, display_info):
+def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, window_log):
     global EnvelopeId
     if validator.validate_email(email) and \
        validator.validate_name(name) and \
        validator.validate_number(ContractNbr) and \
        validator.validate_number(CustomerNbr):
 
-        display_info.display_info_window(name, email, CustomerNbr, ContractNbr)
+        window_log.window_log_window(name, email, CustomerNbr, ContractNbr)
         log_message(name)
         log_message(email)
 
@@ -26,13 +24,13 @@ def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, dis
                                         CustomerNbr, 
                                         ContractNbr, 
                                         CustomerString, 
-                                        display_info))
+                                        window_log))
         thread.start()
     else:
         messagebox.showerror("Error", "Invalid submission details")
 
 
-def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, display_info):
+def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log):
     try:
         # Call the SendEnvelope function with email, 
         # name, and the data provided by the CRM.
@@ -43,7 +41,8 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, display_in
 
         global EnvelopeId
         EnvelopeId = SimCall("10561868-5872-AFAB-4282-DECC")
-        display_info.APIcallOk(name, email) 
+        window_log.AddTextInWindowLog(f"Current Envelope Code is = {EnvelopeId}")
+        window_log.APIcallOk(name, email)
 
         # SignDocumentUrl = response['SignDocumentUrl']
         # RecipientList = response['RecipientList']
@@ -66,12 +65,12 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, display_in
         # Handle the result (e.g., update GUI or log)
     except Exception as e:
         print("Error during email sending:", e)
-        messagebox.showerror("Error", "API call failed")
+        messagebox.showerror("Error", "send_email call failed")
 
 
 def fetch_user_data(window):
-    global EnvelopeId
     try:
+        global EnvelopeId
         userElements = [
             'CustomerNbr',
             'ContractNbr',
@@ -90,5 +89,20 @@ def fetch_user_data(window):
         userInfoWindow.update_info_display(result)
         # print(result)
     except Exception as e:
-        print("Error with user data fetching:", e)
+        print("Error with user data fetching: ", e)
         messagebox.showerror("Error", "GetUserData API call failed")
+
+
+def fetch_envelope_status(window_log):
+    try:
+        global EnvelopeId
+        result = GetEnvelopeStatus(EnvelopeId)
+        # Extract StatusMessage and Message from the result
+        status_message = result.get("StatusMessage", "")
+        message = result.get("Message", "")
+        # Combine StatusMessage and Message with a space in between
+        combined_message = f"Status message = {status_message}, Message = {message}"
+        window_log.AddTextInWindowLog(combined_message)
+    except Exception as e:
+        print("Error with fetching envelope status: ", e)
+        messagebox.showerror("Error", "GetEnvelopeStatus API call failed")
