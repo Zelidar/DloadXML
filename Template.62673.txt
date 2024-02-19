@@ -1,0 +1,25 @@
+Controls
+
+ControlID  ¦  ControlLabel  ¦  ControlValue  ¦  ControlName  ¦  RoleName
+1: eb5fe1bf-65e8-4f56-9a3f-013913614018 ¦ Married ¦  ¦ labelControl ¦ None
+2: 8a9a4f50-1e78-4532-a2cc-2505e1e9c9ec ¦ Dropdown control assigned to Customer ¦  ¦ DropDownControl ¦ Customer
+3: 4cfa58ef-854f-49be-b0d5-25aeb028eb89 ¦ Widowed ¦ false ¦ radioControl ¦ Customer
+4: 77ee9860-5987-4a8c-b430-367aedfb1361 ¦ CustEntryText1 ¦  ¦ textControl ¦ Customer
+5: 192aaab0-a4fb-45bf-a941-45ae2be84538 ¦ CustLongString1 ¦  ¦ textControl ¦ Customer
+6: 29e35eba-c17d-4429-8c92-4f51819598d8 ¦ CustEntryText2 ¦  ¦ textControl ¦ Customer
+7: e2936ae9-e3ee-4b27-b5a0-572b7305d736 ¦ CustomerNbr ¦  ¦ labelControl ¦ None
+8: fc6686ea-1e29-4767-b050-6fe491f9fa88 ¦ ContractNbr ¦  ¦ labelControl ¦ None
+9: 8e2390ef-5344-4981-9c27-9bdff57fc4c5 ¦ Signature ¦  ¦ signControl ¦ Company
+10: 933ee919-9439-46b5-81db-a8aaa42e734a ¦ Signature ¦  ¦ signControl ¦ Customer
+11: f382064b-b012-4c06-b970-b332bafc400c ¦ Single ¦  ¦ labelControl ¦ None
+12: f6ffbff9-b482-4935-8b25-bc0d1f9937ea ¦ CustLongString2 ¦  ¦ textControl ¦ Customer
+13: a4874fdf-f52c-4f5a-a456-c3703eece6cb ¦ Married ¦ false ¦ radioControl ¦ Customer
+14: 320b437f-b651-4bde-851f-ca183ba87330 ¦ Widowed ¦  ¦ labelControl ¦ None
+15: ae1bcc11-4275-4b1a-bcc9-dbe49ff39ebb ¦ Single ¦ true ¦ radioControl ¦ Customer
+16: 4164638a-48cd-48e1-b8e2-f0df505240e6 ¦ Date & Time Stamp ¦  ¦ dateTimeStampControl ¦ Company
+17: c7b16d1b-e7dc-435f-b8ff-f9558589f5fb ¦ Date & Time Stamp ¦  ¦ dateTimeStampControl ¦ Customer
+
+Roles
+
+1. RoleID: 8ec6a891-0f10-4aca-8183-4d22db911801, RoleName: Customer, CultureInfo: en-us
+2. RoleID: 1bc66b98-50a4-452c-872b-ed19c44f8adf, RoleName: Company, CultureInfo: en-us

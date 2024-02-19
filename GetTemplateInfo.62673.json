@@ -1,0 +1,207 @@
+{
+    "StatusCode": 200,
+    "StatusMessage": "OK",
+    "Message": "Template found",
+    "TemplateId": null,
+    "TemplateBasicInfo": {
+        "TemplateId": "2288bc45-585c-4485-88f7-bf5d8feeb617",
+        "TemplateCode": 62673,
+        "UserEmail": "zaid.el-hoiydi_tc@frama.com",
+        "TemplateName": "PersoDataCollection",
+        "TemplateDescription": "Using Rsign to collect information",
+        "IsStatic": null,
+        "ExpiryDate": "2024-05-12T00:00:00",
+        "CreatedDate": "2024-02-13T13:51:14.26",
+        "LastModifiedDate": "2024-02-13T13:57:44.167",
+        "Subject": "Required Personal Information",
+        "Body": "<div>Dear Ms., Mr.</div>\r\n\r\n<p>Thank you for trusting our services.</p>\r\n\r\n<p>As you have already been informed, please find attached a personal data collection form which will allow us to create a new case file in our system. Once we have received the&nbsp;information, we will send you a link where you can select an initial appointment to your convenience.</p>\r\n\r\n<p>Best regards</p>\r\n\r\n<p>Anatole France</p>\r\n",
+        "TypeName": null,
+        "DocumentList": [
+            {
+                "DocumentId": "3c9e80ea-0f77-4cb7-bd7c-fd38f19dacc4",
+                "DocumentName": "DloadXML.docx",
+                "Order": 1,
+                "documentContentDetails": [
+                    {
+                        "ControlID": "4cfa58ef-854f-49be-b0d5-25aeb028eb89",
+                        "ControlName": "radioControl",
+                        "ControlHtmlID": "radioControl84710",
+                        "GroupName": "MaritalStatus",
+                        "Label": "Radio3",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "false",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "6dee3c5a-306d-46fc-bbfa-29523832fb9b",
+                        "ControlName": "DropDownControl",
+                        "ControlHtmlID": "DropDownControl86130",
+                        "GroupName": "",
+                        "Label": "Dropdown control assigned to Customer",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": [
+                            {
+                                "ID": "26c72ec6-41a0-45ec-99e0-38a281bbac8e",
+                                "OptionText": "Yellow",
+                                "Order": 1
+                            },
+                            {
+                                "ID": "d79344c9-c2dd-4969-a06b-eef1f7270623",
+                                "OptionText": "Black",
+                                "Order": 0
+                            }
+                        ]
+                    },
+                    {
+                        "ControlID": "77ee9860-5987-4a8c-b430-367aedfb1361",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl47496",
+                        "GroupName": "",
+                        "Label": "CustEntryText1",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "192aaab0-a4fb-45bf-a941-45ae2be84538",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl59562",
+                        "GroupName": "",
+                        "Label": "CustLongString1",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "29e35eba-c17d-4429-8c92-4f51819598d8",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl41355",
+                        "GroupName": "",
+                        "Label": "CustEntryText2",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "e2936ae9-e3ee-4b27-b5a0-572b7305d736",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl71858",
+                        "GroupName": "",
+                        "Label": "CustomerNbr",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "fc6686ea-1e29-4767-b050-6fe491f9fa88",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl50199",
+                        "GroupName": "",
+                        "Label": "ContractNbr",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "f6ffbff9-b482-4935-8b25-bc0d1f9937ea",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl55820",
+                        "GroupName": "",
+                        "Label": "CustLongString2",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "a4874fdf-f52c-4f5a-a456-c3703eece6cb",
+                        "ControlName": "radioControl",
+                        "ControlHtmlID": "radioControl33350",
+                        "GroupName": "MaritalStatus",
+                        "Label": "Radio2",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "false",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "ae1bcc11-4275-4b1a-bcc9-dbe49ff39ebb",
+                        "ControlName": "radioControl",
+                        "ControlHtmlID": "radioControl10046",
+                        "GroupName": "MaritalStatus",
+                        "Label": "Radio1",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "false",
+                        "RoleId": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    }
+                ]
+            }
+        ],
+        "TemplateRoleList": [
+            {
+                "RoleID": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                "RoleName": "Customer",
+                "Order": 1,
+                "RecipientEmail": null,
+                "RecipientName": null,
+                "RecipientTypeID": "c20c350e-1c6d-4c03-9154-2cc688c099cb",
+                "RecipientID": null,
+                "RecipientType": null,
+                "CcSignerType": "0",
+                "CultureInfo": "en-us",
+                "DeliveryMode": null,
+                "DialCode": "",
+                "CountryCode": "",
+                "Mobile": null
+            },
+            {
+                "RoleID": "1bc66b98-50a4-452c-872b-ed19c44f8adf",
+                "RoleName": "Company",
+                "Order": 2,
+                "RecipientEmail": null,
+                "RecipientName": null,
+                "RecipientTypeID": "c20c350e-1c6d-4c03-9154-2cc688c099cb",
+                "RecipientID": null,
+                "RecipientType": null,
+                "CcSignerType": "0",
+                "CultureInfo": "en-us",
+                "DeliveryMode": null,
+                "DialCode": "",
+                "CountryCode": "",
+                "Mobile": null
+            }
+        ],
+        "EnableMessageToMobile": false,
+        "StaticLinkExpiryDate": null
+    },
+    "TemplateList": null
+}

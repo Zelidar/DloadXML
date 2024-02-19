@@ -9,7 +9,8 @@ import xml.etree.ElementTree as ET
 
 import time
 def SimCall(SimCallNumber):
-    time.sleep(5)
+    time.sleep(3)
+    print(f"A RSign call was simulated returning: {SimCallNumber}")
     return SimCallNumber
 
 
@@ -56,13 +57,11 @@ def GetEnvelopeInfo():
         "Status": "Completed;Terminated",
         "DetailOrSummary": "Summary"
     }
-
     GetEndpointString = '/api/V1/Envelope/GetEnvelopeStatusInfo'
     headers = {'AuthToken': GetAuthToken()}
     query = BaseURL + GetEndpointString
     response = requests.post(query, headers=headers, data=payload)
-    myData = response.json()
-    return myData
+    return response.json()
 
 
 def GetUserData(EnvelopeCode, userElements):
@@ -73,13 +72,13 @@ def GetUserData(EnvelopeCode, userElements):
     json_data = response.json()
     # Extract the Base64-encoded XML data
     base64_encoded_xml = json_data.get('Base64FileData', '')
+
     elements_dict = {}
     if base64_encoded_xml:
         # Decode the Base64-encoded XML data
         xml_data = base64.b64decode(base64_encoded_xml).decode('utf-8')
         # Parse the XML data
         root = ET.fromstring(xml_data)
-        
         for control in root.iter('Control'):
             label = control.attrib.get('label')
             if label in userElements:
@@ -99,8 +98,7 @@ def GetTemplateInfo(TemplateCode):
     headers = {'AuthToken': GetAuthToken()}
     query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
-    myData = response.json()
-    return myData
+    return response.json()
 
 
 def GetRolesInfo(TemplateCode):
@@ -110,33 +108,19 @@ def GetRolesInfo(TemplateCode):
     query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
     myData = response.json()
-
     # Initialize an empty list to store RoleIDs
     roles_info = []
-
     # Access the TemplateBasicInfo and then the TemplateRoleList
     template_basic_info = myData.get("TemplateBasicInfo", {})
     template_role_list = template_basic_info.get("TemplateRoleList", [])
-
     # Iterate through the TemplateRoleList to extract RoleID and RoleName
     for role in template_role_list:
         role_id = role.get("RoleID")
         role_name = role.get("RoleName")
         if role_id and role_name:
             roles_info.append({"RoleID": role_id, "RoleName": role_name})
-
     # Returning the list of RoleIDs
     return roles_info
-
-
-# def GetXMLdata(EnvelopeCode):
-#     GetEndpointString = '/api/V1/Template/GetDownloadeDataByCode/' + str(EnvelopeCode)
-#     headers = {'AuthToken': GetAuthToken()}
-#     query = BaseURL + GetEndpointString
-#     response = requests.get(query, headers=headers)
-#     myData = response.json()
-
-#     return myData
 
 
 def SendEnvelope(email, name):
@@ -144,12 +128,12 @@ def SendEnvelope(email, name):
     query = BaseURL + SendEnvelopeFromTemplate
     headers = {
         'AuthToken': GetAuthToken(),
-        'Content-Type': 'application/json'  # Add this line
+        'Content-Type': 'application/json'
     }
     # The TemplateCode and the RoleID can be obtained using respectively
     # GetTemplateData() and GetTemplateInfo() implemented above.
     
-    TemplateCode = 60592
+    TemplateCode = 62651
     EmailSubject = "Here is your membership application"
     RecipientRoleID = "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9"
 
@@ -181,14 +165,14 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
     }
-    TemplateCode = 62651  # To be updated
-    EmailSubject = "Here is your rental contract (from app)"
-    RecipientRoleID = "5d52c9a7-a310-4914-bb21-31573728c978"
+    TemplateCode = 62673  # To be updated
+    EmailSubject = "Here is a Health History Form (sent from CRM)"
+    RecipientRoleID = "8ec6a891-0f10-4aca-8183-4d22db911801"
 
     data = {
         "TemplateCode": TemplateCode,
         "Subject": EmailSubject,
-        "PostSigningUrl": "https://itmx.de",
+        "PostSigningUrl": "https://frama.com",
         "IsSingleSigningURL": "True",
         "SigningMethod": 0,
         "TemplateRoleRecipientMapping": [
@@ -200,17 +184,17 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         ],
         "UpdateControls": [ # To be updated according to the template
             {
-            "ControlID": "27ced1eb-2142-4520-bec7-7645be1fc5a5",
+            "ControlID": "e2936ae9-e3ee-4b27-b5a0-572b7305d736",
             "IsReadOnly": True,
             "ControlValue": CustomerNbr,
             },
             {
-            "ControlID": "5cf8eb4e-fab4-4c9a-80ec-aa5327453a1c",
+            "ControlID": "fc6686ea-1e29-4767-b050-6fe491f9fa88",
             "IsReadOnly": True,
             "ControlValue": ContractNbr,
             },
             {
-            "ControlID": "0b813678-1e63-4fd8-970f-1821e0fca1a1",
+            "ControlID": "192aaab0-a4fb-45bf-a941-45ae2be84538",
             "IsReadOnly": False,
             "ControlValue": CustomerString,
             } 
@@ -220,9 +204,11 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
     response = requests.post(query, headers=headers, data=json.dumps(data))
 
     if response.status_code == 200:
-        return "The envelope was successfully updated then sent."
+        print(f"The envelope was successfully updated then sent: {response.status_code}, Response: {response.text}")
+        return response.json()
     else:
-        return f"Failed to send dynamic envelope. Status code: {response.status_code}, Response: {response.text}"
+        print(f"Failed to send dynamic envelope. Status code: {response.status_code}, Response: {response.text}")
+        return None
 
 
 # Write the formatted JSON string to a text file

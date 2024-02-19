@@ -9,9 +9,9 @@ def get_current_datetime():
     return now.strftime("%Y-%B-%d %H:%M:%S")  # Format the date and time
 
 def generate_number():
-    number = random.randint(0, 9999999)  # Generate a random number between 0 and 9999999
-    number *= 2  # Ensure the number is divisible by 2
-    return f'000{number:07}'  # Format the number as a 10-digit string with leading zeros
+    number = random.randint(0, 99999)  # Generate a random number between 0 and 9999999
+    number *= 2  # Ensure the number is divisible by 2, making it less random.
+    return f'00{number:4}'  # Format the number as a string with leading zeros
 
 class UserInputApp:
     def __init__(self, root, display_info):
@@ -28,46 +28,46 @@ class UserInputApp:
         self.name_entry = tk.Entry(self.root)
         self.name_entry.pack()
         # Set default choice
-        self.name_entry.insert(0, "Zaid")
+        self.name_entry.insert(0, "Test Customer")
 
         # Email Entry
         tk.Label(self.root, text="Enter your email:").pack()
         self.email_entry = tk.Entry(self.root)
         self.email_entry.pack()
         # Set default choice
-        self.email_entry.insert(0, "timgat@gmail.com")
+        self.email_entry.insert(0, "zaid.el-hoiydi@frama.com")
 
         # CRM Customer Number Entry
         tk.Label(self.root, text="CRM Customer Number:").pack()
         self.CrmCustNbr_entry = tk.Entry(self.root, bg='light blue', justify='right')
-        self.CrmCustNbr_entry.insert(0, generate_number())  # Insert the random number
+        self.CrmCustNbr_entry.insert(0,  "CRM_" + str(generate_number()))  # Insert the random number
         self.CrmCustNbr_entry.pack()
 
         # CRM Contract Number Entry
         tk.Label(self.root, text="CRM Contract Number:").pack()
         self.CrmContractNbr_entry = tk.Entry(self.root, bg='light blue', justify='right')
-        self.CrmContractNbr_entry.insert(0, generate_number())  # Insert the random number
+        self.CrmContractNbr_entry.insert(0,  "CRM_" + str(generate_number()))  # Insert the random number
         self.CrmContractNbr_entry.pack()
 
         # CRM Customer String Entry
         tk.Label(self.root, text="CRM Customer String:").pack()
         self.CrmCustString_entry = tk.Entry(self.root, bg='light blue', justify='right')
-        self.CrmCustString_entry.insert(0, get_current_datetime())  # Insert the current date and time
+        self.CrmCustString_entry.insert(0, "CRM_" + get_current_datetime())  # Insert the current date and time
         self.CrmCustString_entry.pack()
 
         # Submission Text
-        submission_text = "Once you press the submit button, a membership application will be sent to the email you have entered. Please sign it."
+        submission_text = "Once you press the submit button, a contract will be sent to the email you have entered. Please provide the requested information, and sign it."
         tk.Label(self.root, text=submission_text, wraplength=300).pack()
 
         # Submit Button
-        self.submit_button = tk.Button(self.root, text="Send me the contract...", command=self.submit1)
+        self.submit_button = tk.Button(self.root, text="Send the contract...", command=self.submit1)
         self.submit_button.pack()
         # Bind Enter key to the submit function
         self.root.bind("<Return>", self.submit1)
 
 
         # Data Fetching Text
-        data_fetching_text = "Whatch the log window. Once signed, you can collect user data."
+        data_fetching_text = "Whatch the log window. Once signed, you can collect user data from the envelope located in the RPost clound."
         tk.Label(self.root, text=data_fetching_text, wraplength=300).pack()
 
         # Fetch User Data Button

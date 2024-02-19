@@ -1,9 +1,10 @@
 import os
 import requests
+import file_logging
 from myTestCompany import ReferenceKey, EmailId, Password
 
 BaseURL = 'https://api3.use.rsign.com'  # RSign Sandbox
-AuthenticateIUser = '/api/V1/Authentication/AuthenticateIUser'
+AuthenticateIUser = '/api/V1/Authentication/AuthenticateUserV2'
 
 def GetAuthToken():
     auth_token_file = 'MyAuthToken.txt'
@@ -20,6 +21,10 @@ def GetAuthToken():
         payload = {'ReferenceKey': ReferenceKey, 'EmailID': EmailId, 'Password': Password}
         query = BaseURL + AuthenticateIUser
         AuthResponse = requests.post(query, data=payload)
+
+        TokenExpiration = AuthResponse.json()['AuthTokenExpires']
+        file_logging.log_message(f"Token expiration date: {TokenExpiration}", 
+                                 prefix="API")
 
         print(AuthResponse.json()['AuthMessage'])
         print(AuthResponse.json()['EmailId'])

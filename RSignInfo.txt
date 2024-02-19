@@ -47,3 +47,16 @@ SentDate  ¦  Status  ¦  EnvelopeCode  ¦  SenderName  ¦  Subject
 'Married': [{'Text': ''}, {'Text': 'True'}],
 'Widowed': [{'Text': 'False'}, {'Text': ''}],
 }
+
+{
+'Single': ['False', ''], 
+'CustomerNbr': [''], 
+'Dropdown control assigned to Customer': ['Black'], 
+'Widowed': ['False', ''], 
+'CustLongString2': ['CustLongString2 is for the user to enter, empty in this example.'], 
+'ContractNbr': [''], 
+'Married': ['True', ''], 
+'CustEntryText2': ['CustEntryText2 with some text'], 
+'CustEntryText1': ['CustEntryText1 with some text'], 
+'CustLongString1': ["CustLongString1 could be prefilled, but isn't when manually processed."]
+}
