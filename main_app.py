@@ -7,7 +7,7 @@ EnvelopeId = None
 def main():
     root = tk.Tk() # Create the UI window instance
     window_log = WindowInfoLog(root) # Create the info log window instance
-    UserInputApp(root, window_log) # Create the UI window
+    UserInputApp(root, window_log, EnvelopeId) # Create the UI window
     
     root.mainloop()
 
