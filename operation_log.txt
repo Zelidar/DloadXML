@@ -101,3 +101,13 @@ Name: Zaid, Email: timgat@gmail.com
 [2024-02-19 19:27:45] [INFO] zaid.el-hoiydi@frama.com
 [2024-02-19 19:27:54] [INFO] Test Customer
 [2024-02-19 19:27:54] [INFO] zaid.el-hoiydi@frama.com
+[2024-02-20 08:54:23] [INFO] John Doe
+[2024-02-20 08:54:23] [INFO] zaid.el-hoiydi@frama.com
+[2024-02-20 08:56:31] [INFO] John Doe
+[2024-02-20 08:56:46] [INFO] zaid.el-hoiydi@frama.com
+[2024-02-20 09:02:58] [INFO] John Doe
+[2024-02-20 09:02:58] [INFO] zaid.el-hoiydi@frama.com
+[2024-02-20 10:50:22] [INFO] Johnny Doesit
+[2024-02-20 10:50:22] [INFO] zaid.el-hoiydi@frama.com
+[2024-02-20 11:10:07] [INFO] John Doe
+[2024-02-20 11:10:07] [INFO] zaid.el-hoiydi@frama.com

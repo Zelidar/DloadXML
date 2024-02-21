@@ -1,7 +1,7 @@
 # Setting the environment to connecto to RSign
 import json
 import requests
-# Fetching my RPost test credentials
+# Fetching RPost API credentials and URL
 from GettingRSignAuthToken import GetAuthToken, BaseURL
 
 import base64
@@ -173,21 +173,33 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
     }
-    TemplateCode = 62673  # To be updated
+    TemplateCode = 62673  # This needs to correspond to the below RoleID
+
+    # Section for the signer
     EmailSubject = "Here is a Health History Form (sent from CRM)"
     RecipientRoleID = "8ec6a891-0f10-4aca-8183-4d22db911801"
+
+    # Section for the company owning the CRM
+    CompanyRoleID = "1bc66b98-50a4-452c-872b-ed19c44f8adf"
+    CompanyEmail = "zaid.el-hoiydi@frama.com"
+    CompanyName = "Company Administration"
 
     data = {
         "TemplateCode": TemplateCode,
         "Subject": EmailSubject,
-        "PostSigningUrl": "https://frama.com",
-        "IsSingleSigningURL": "True",
+        "PostSigningUrl": "https://www.frama.com/en/digital-products/electronic-signature/",
+        "IsSingleSigningURL": "False",
         "SigningMethod": 0,
         "TemplateRoleRecipientMapping": [
             {
                 "RecipientID": RecipientRoleID,
                 "RecipientEmail": email,
-                "RecipientName": name
+                "RecipientName": name,
+            },
+            {
+                "RecipientID": CompanyRoleID,
+                "RecipientEmail": CompanyEmail,
+                "RecipientName": CompanyName,
             }
         ],
         "UpdateControls": [ # To be updated according to the template
@@ -212,7 +224,7 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
     response = requests.post(query, headers=headers, data=json.dumps(data))
 
     if response.status_code == 200:
-        print(f"The envelope was successfully updated then sent: {response.status_code}, Response: {response.text}")
+        print(f"The envelope was successfully prefilled then sent: {response.status_code}, Response: {response.text}")
         return response.json()
     else:
         print(f"Failed to send dynamic envelope. Status code: {response.status_code}, Response: {response.text}")

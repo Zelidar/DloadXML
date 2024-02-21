@@ -14,13 +14,13 @@ def generate_number():
     return f'00{number:4}'  # Format the number as a string with leading zeros
 
 class UserInputApp:
-    EnvelopeId = None
-    def __init__(self, root, window_log, EnvelopeId):
+    EnvelopeCode = None
+    def __init__(self, root, window_log, EnvelopeCode):
         self.window_log = window_log
         self.root = root
-        self.EnvelopeId = EnvelopeId
+        self.EnvelopeCode = EnvelopeCode
         self.root.title("CRM Simulation")
-        entry_width = 24
+        entry_width = 16
         large_entry_width = 32
 
         # Load and display logo
@@ -35,38 +35,38 @@ class UserInputApp:
 
         # Name Entry
         tk.Label(self.root, text="Enter your name:").pack()
-        self.name_entry = tk.Entry(self.root, width=entry_width, justify='right')
+        self.name_entry = tk.Entry(self.root, width=large_entry_width, justify='center')
         self.name_entry.pack()
         # Set default choice
         self.name_entry.insert(0, "John Doe")
 
         # Email Entry
         tk.Label(self.root, text="Enter an email:").pack()
-        self.email_entry = tk.Entry(self.root, width=entry_width, justify='right')
+        self.email_entry = tk.Entry(self.root, width=large_entry_width, justify='center')
         self.email_entry.pack()
         # Set default choice
         self.email_entry.insert(0, "zaid.el-hoiydi@frama.com")
 
         # CRM Customer Number Entry
         tk.Label(self.root, text="CRM Customer Number:").pack()
-        self.CrmCustNbr_entry = tk.Entry(self.root, width=large_entry_width, bg='light blue', justify='right')
+        self.CrmCustNbr_entry = tk.Entry(self.root, width=entry_width, bg='light blue', justify='center')
         self.CrmCustNbr_entry.insert(0,  "CRM_" + str(generate_number()))  # Insert the random number
         self.CrmCustNbr_entry.pack()
 
         # CRM Contract Number Entry
         tk.Label(self.root, text="CRM Contract Number:").pack()
-        self.CrmContractNbr_entry = tk.Entry(self.root, width=large_entry_width, bg='light blue', justify='right')
+        self.CrmContractNbr_entry = tk.Entry(self.root, width=entry_width, bg='light blue', justify='center')
         self.CrmContractNbr_entry.insert(0,  "CRM_" + str(generate_number()))  # Insert the random number
         self.CrmContractNbr_entry.pack()
 
         # CRM Customer String Entry
         tk.Label(self.root, text="CRM Customer String:").pack()
-        self.CrmCustString_entry = tk.Entry(self.root, width=large_entry_width, bg='light blue', justify='right')
+        self.CrmCustString_entry = tk.Entry(self.root, width=large_entry_width, bg='light blue', justify='center')
         self.CrmCustString_entry.insert(0, "CRM_" + get_current_datetime())  # Insert the current date and time
         self.CrmCustString_entry.pack()
 
         # Submission Text
-        submission_text = ("Once you press the submit button, a RSign transaction"
+        submission_text = ("Once you press the 'Send ...' button, a RSign transaction"
                            " will begin = email be sent to the one you have entered.")
         tk.Label(self.root, text=submission_text, wraplength=300).pack()
         # Submit Button
@@ -79,7 +79,7 @@ class UserInputApp:
         self.submit_button.pack()
 
         # Envelope Status Fetching Text
-        env_status_fetching_text = ("Clicking 'Seeking ..' button will fetch the latest"
+        env_status_fetching_text = ("Clicking 'Seek ...' button will fetch the latest"
                                     " envelope status and put it in the log window.")
         tk.Label(self.root, text=env_status_fetching_text, wraplength=300).pack()
         # Fetch User Data Button
@@ -91,7 +91,7 @@ class UserInputApp:
 
         # Data Fetching Text
         data_fetching_text = ("Once signed, you can collect user data from the envelope"
-                              " located in the RPost cloud using 'Fetching user...'")
+                              " located in the RPost cloud using 'Import user...'")
         tk.Label(self.root, text=data_fetching_text, wraplength=300).pack()
         # Fetch User Data Button
         self.fetch_data_button = tk.Button(self.root, 

@@ -1,6 +1,6 @@
 from tkinter import messagebox  # Import messagebox explicitly
 from collecting_user_info import CollectedUserInfo
-from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall
+from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope
 from input_validation import UserInputValidator
 import threading
 from file_logging import log_message
@@ -8,7 +8,7 @@ from file_logging import log_message
 validator = UserInputValidator()
 
 def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, window_log):
-    global EnvelopeId
+    global EnvelopeCode
     if validator.validate_email(email) and \
        validator.validate_name(name) and \
        validator.validate_number(ContractNbr) and \
@@ -32,35 +32,30 @@ def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, win
 
 def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log):
     try:
+        global EnvelopeCode
+
+        # EnvelopeCode = SimCall("10561868-5872-AFAB-4282-DECC")
+        # result = SimCall("A call to the RSign API was simulated")
+
         # Call the SendEnvelope function with email, 
         # name, and the data provided by the CRM.
-        # response = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
+        response = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
 
         # Extract the required items
-        # EnvelopeId = response['EnvelopeId']
+        EnvelopeCode = response['EnvelopeCode']
 
-        global EnvelopeId
-        EnvelopeId = SimCall("10561868-5872-AFAB-4282-DECC")
-        window_log.AddTextInWindowLog(f"Current Envelope Code is = {EnvelopeId}")
+        window_log.AddTextInWindowLog(f"Current Envelope Code is = {EnvelopeCode}")
+        print(f"EnvelopeCode: {EnvelopeCode}")
         window_log.APIcallOk(name, email)
 
-        # SignDocumentUrl = response['SignDocumentUrl']
-        # RecipientList = response['RecipientList']
-        # # Assuming each recipient in the list has 'RecipientName' and 'RecipientEmail'
+        # Assuming each recipient in the list has 'RecipientName' and 'RecipientEmail'
         # for recipient in RecipientList:
         #     RecipientName = recipient['RecipientName']
         #     RecipientEmail = recipient['RecipientEmail']
 
-        #     # Print or use the extracted information
-        #     print(f"EnvelopeId: {EnvelopeId}")
-        #     print(f"SignDocumentUrl: {SignDocumentUrl}")
-        #     print(f"RecipientName: {RecipientName}")
-        #     print(f"RecipientEmail: {RecipientEmail}")
-        
-        # result = SimCall("A call to the RSign API was simulated")
-
-        # result = GetEnvelopeInfo()
-        # print(result)
+            # Print or use the extracted information
+            # print(f"RecipientName: {RecipientName}")
+            # print(f"RecipientEmail: {RecipientEmail}")
 
         # Handle the result (e.g., update GUI or log)
     except Exception as e:
@@ -70,7 +65,7 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log
 
 def fetch_user_data(window):
     try:
-        global EnvelopeId
+        global EnvelopeCode
         userElements = [
             'CustomerNbr',
             'ContractNbr',
@@ -83,7 +78,7 @@ def fetch_user_data(window):
             'Married',
             'Widowed'
         ]
-        result = GetUserData(EnvelopeId, userElements)
+        result = GetUserData(EnvelopeCode, userElements)
         userInfoWindow = CollectedUserInfo(window)
         userInfoWindow.create_user_info_window()
         userInfoWindow.update_info_display(result)
@@ -95,8 +90,8 @@ def fetch_user_data(window):
 
 def fetch_envelope_status(window_log):
     try:
-        global EnvelopeId
-        result = GetEnvelopeStatus(EnvelopeId)
+        global EnvelopeCode
+        result = GetEnvelopeStatus(EnvelopeCode)
         # Extract StatusMessage and Message from the result
         status_message = result.get("StatusMessage", "")
         message = result.get("Message", "")
