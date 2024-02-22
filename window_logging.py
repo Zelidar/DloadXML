@@ -46,7 +46,7 @@ class WindowInfoLog:
 
             # Insert and style the email sent message
             userName = self.user_entries[-1].split(', ')[0].split(': ')[1]
-            userEmail = self.user_entries[-1].split(', ')[2].split(': ')[1]
+            userEmail = self.user_entries[-1].split(', ')[1].split(': ')[1]
             email_message = "... now sending an email to: {} for user: {}\n".format(userEmail, userName)
             self.text_widget.insert(tk.END, email_message, 'email_sent')
             self.text_widget.see(tk.END)

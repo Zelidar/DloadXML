@@ -1,0 +1,38 @@
+{
+    "DialCodeDropdownList": null,
+    "EnableMessageToMobile": "false",
+    "EnvelopeCode": "55274209-5939-FCBC-8950-FCDA",
+    "EnvelopeId": "d6686304-3218-43b7-afe7-e69e3a3b272c",
+    "LanguageBasedApiMessge": null,
+    "Message": "Envelope has been sent. Please fill the Prefill details, to send the envelope for further signing.",
+    "PostSendingNavigationPage": null,
+    "PrefillRecipientId": null,
+    "RecipientList": [
+        {
+            "CountryCode": "",
+            "DeliveryMode": 0,
+            "DialCode": "",
+            "Mobile": "",
+            "Order": 0,
+            "RecipientEmail": "zaid.el-hoiydi_tc@frama.com",
+            "RecipientName": "Zaid ElHoiydiTC",
+            "SigningUrl": "https://sign.use.rsign.com//SignDocument/Index?EM7KGynBr6mQGtK%2f0yCgh8rfiTaI18JSXiCjYGTvRLuWSNmKssAfvSlpN%2fqizVyzR2x9nXmQSM16xOaM%2fmfl0dmz%2feDDr%2bL0L4Znd%2fOkbyruDpYdj%2fHcE53dnNhMPc%2bOYbKwtYLSxpnJd%2beIX5zFjUYPWEYe6%2fZ3VFy%2b80lsuCPL%2byj6AxNAJw%3d%3d",
+            "Type": "Prefill"
+        },
+        {
+            "CountryCode": "",
+            "DeliveryMode": None,
+            "DialCode": "",
+            "Mobile": "",
+            "Order": 1,
+            "RecipientEmail": "zaid.el-hoiydi@frama.com",
+            "RecipientName": "John Doe",
+            "SigningUrl": "https://sign.use.rsign.com//SignDocument/Index?EM7KGynBr6mQGtK%2f0yCgh8rfiTaI18JSXiCjYGTvRLuWSNmKssAfvSlpN%2fqizVyzR2x9nXmQSM1aJzsjoGAl1D%2bSGXBqZDJeB8fqQGXBmxYUe1WmlECbDZj0bmojC3JrKgJwcHd3eaUnkLB22N40w8SEmgKFPmyVcI%2flraAT3EPj6gl5%2fNhrsg%3d%3d",
+            "Type": "Signer"
+        }
+    ],
+    "SignDoumentUrl": null,
+    "StatusCode": 200,
+    "StatusMessage": "OK",
+    "TransparencyChangedMessage": null
+}

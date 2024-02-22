@@ -1,0 +1,22 @@
+ControllD, ControlLabel, ControlValue, ControlName, RoleName
+2fd8505b-9fbf-4ec4-896c-212b3d5a22a3, ContractNbr, ****, textControl, Company
+2ae83a96-6d8e-4e9f-a80e-2fecd7c1a829, Mercury, ****, labelControl, None
+1611904c-de12-40bf-a279-4841b95c31ea, Mercury, **false**, radioControl, Customer
+a91aa916-cd5e-4658-9aca-4c19f8d44013, Name, ****, nameControl, Customer
+3eef4a50-d5e2-4355-be0b-6805e4478f5a, Earth, ****, labelControl, None
+bb61 d4db-739d-48be-9b9c-6d7351807af7, CustLongString2, ****, textControl, Customer
+c3bd4508-e636-4fc6-ad01 -9b4bff9188b2, CustEntryText2, ****, textControl, Customer
+d553eda3-f171 -469c-bb7d-a1 d4ddb15265, Earth, **true**, radioControl, Customer
+50e51d43-0f4c-47ae-b5d7-a2ec65164b20, Signature, ****, signControl, Company
+c0f95891 -1f91 -45b9-ae81 -af1 ee32759b0, Venus, ****, labelControl, None
+d9393ba9-215a-4972-8e39-af4ee1daf0f5, Signature, ****, signControl, Customer
+3d192595-0883-496e-9a77-bb845f8b3d3f, CustEntryTextl, ****, textControl, Customer
+73e44240-c5f0-4b78-bd74-c7a2247d3974, CustLongStringl, ****, textControl, Customer
+12511237-3e68-4ef6-907e-e3763b5d415d, Mars, **false**, radioControl, Customer
+92d86f04-5f2b-4095-9ea8-e83bd0f2fd5f, Mars, ****, labelControl, None
+d2c3604f-f309-4317-a6a6-ec2fe1cb4944, Date & Time Stamp, ****, dateTimeStampControl, Customer
+4348e7e5-9b71-4861-aea7-eeb5cb03cdd1, CustomerNbr, ****, textControl, Company
+b513a1d6-c978-41c1-9125-eef4b3f832e6, Date & Time Stamp, ****, dateTimeStampControl, Company
+da07a418-7004-48d9-b1a9-ef59be6cd1c1, Dropdown control assigned to Customer, ****, DropDownControl, Customer
+Í44b49cb-c958-4b03-8d5e-f2bfa5526d47, Venus, **false**, radioControl, Customer
+

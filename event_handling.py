@@ -1,6 +1,6 @@
 from tkinter import messagebox  # Import messagebox explicitly
 from collecting_user_info import CollectedUserInfo
-from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope
+from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope, SendEnvelopeFromRule
 from input_validation import UserInputValidator
 import threading
 from file_logging import log_message
@@ -39,13 +39,13 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log
 
         # Call the SendEnvelope function with email, 
         # name, and the data provided by the CRM.
-        response = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
+        response = SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString)
 
         # Extract the required items
         EnvelopeCode = response['EnvelopeCode']
 
-        window_log.AddTextInWindowLog(f"Current Envelope Code is = {EnvelopeCode}")
-        print(f"EnvelopeCode: {EnvelopeCode}")
+        window_log.AddTextInWindowLog(f"Current envelope code: {EnvelopeCode}")
+        print(f"Current envelope code: {EnvelopeCode}")
         window_log.APIcallOk(name, email)
 
         # Assuming each recipient in the list has 'RecipientName' and 'RecipientEmail'

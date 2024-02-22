@@ -5,6 +5,7 @@ import requests
 from GettingRSignAuthToken import GetAuthToken, BaseURL
 
 import base64
+import os
 import xml.etree.ElementTree as ET
 
 import time
@@ -93,6 +94,32 @@ def GetUserData(EnvelopeCode, userElements):
     return elements_dict
 
 
+def LoadB64dataForRule():
+    base_filename = 'DloadXMLb64'  # Common base filename
+    docx_template_file = base_filename + '.docx'
+    b64_template_file = base_filename + '.b64'
+
+    if os.path.exists(b64_template_file):
+        print(f"Loading B64 template from {b64_template_file}")
+        with open(b64_template_file, 'r') as file:
+            return file.read()
+
+    elif os.path.exists(docx_template_file):
+        print(f"Converting DOCX template to B64...")
+        with open(docx_template_file, 'rb') as file:  # Open in binary mode
+            binary_data = file.read()
+            encoded_data = base64.b64encode(binary_data)
+
+        with open(b64_template_file, 'wb') as file:
+            file.write(encoded_data) 
+
+        return encoded_data.decode('utf-8')  
+    
+    else:
+        print(f"Error! Template file {docx_template_file} not found.")
+        return None
+
+
 def GetTemplateInfo(TemplateCode):
     GetEndpointString = '/api/V1/Template/GetTemplateInfo/' + str(TemplateCode)
     headers = {'AuthToken': GetAuthToken()}
@@ -131,9 +158,8 @@ def GetRolesInfo(TemplateCode):
     return roles_info
 
 
-def SendEnvelope(email, name):
-    SendEnvelopeFromTemplate = '/api/V1/Envelope/SendEnvelopeFromTemplate'
-    query = BaseURL + SendEnvelopeFromTemplate
+def SendEnvelopeFromTemplate(email, name):
+    query = BaseURL + '/api/V1/Envelope/SendEnvelopeFromTemplate'
     headers = {
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
@@ -164,6 +190,66 @@ def SendEnvelope(email, name):
         return "The envelope was successfully sent."
     else:
         return f"Failed to send envelope. Status code: {response.status_code}, Response: {response.text}"
+
+
+def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
+    query = BaseURL + '/api/V1/Envelope/SendEnvelopeFromRule'
+    headers = {
+        'AuthToken': GetAuthToken(),
+        'Content-Type': 'application/json'
+    }
+    TemplateCode = 62673  # This needs to correspond to the below RoleName and ControlId
+
+    EmailSubject = "Contract Document (sent from CRM)"
+
+    data = { # To be updated accordingly
+        "TemplateCode": TemplateCode,
+        "Subject": EmailSubject,
+        "SigningMethod": 0,
+        "Documents": [
+            {
+                "Name": "DloadXMLb64.docx",
+                "DocumentBase64Data": LoadB64dataForRule(),
+            }
+        ],
+        "TemplateRoleRecipientMapping": [
+            {
+                "RoleID": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                "RecipientEmail": email,
+                "RecipientName": name,
+            },
+            {
+                "RoleID": "1bc66b98-50a4-452c-872b-ed19c44f8adf",
+                "RecipientEmail": "zaid.el-hoiydi@frama.com",
+                "RecipientName": "Company Administration"
+            }
+            ],
+            "UpdateControls": [
+            {
+            "ControlID": "4348e7e5-9b71-4861-aea7-eeb5cb03cdd1",
+            "IsReadOnly": True,
+            "ControlValue": CustomerNbr,
+            },
+            {
+            "ControlID": "2fd8505b-9fbf-4ec4-896c-212b3d5a22a3",
+            "IsReadOnly": True,
+            "ControlValue": ContractNbr,
+            },
+            {
+            "ControlID": "73e44240-c5f0-4b78-bd74-c7a2247d3974",
+            "IsReadOnly": False,
+            "ControlValue": CustomerString,
+            } 
+        ]
+    }
+
+    response = requests.post(query, headers=headers, data=json.dumps(data))
+    
+    if response.status_code == 200:
+        print("The envelope was successfully sent (rule).")
+        return response.json()
+    else:
+        return f"Failed to send envelope (rule). Status code: {response.status_code}, Response: {response.text}"
 
 
 def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
