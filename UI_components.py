@@ -38,7 +38,7 @@ class UserInputApp:
         self.name_entry = tk.Entry(self.root, width=large_entry_width, justify='center')
         self.name_entry.pack()
         # Set default choice
-        self.name_entry.insert(0, "John Doe")
+        self.name_entry.insert(0, "Zaid El-Hoiydi")
 
         # Email Entry
         tk.Label(self.root, text="Enter an email:").pack()

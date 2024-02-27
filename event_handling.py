@@ -96,7 +96,7 @@ def fetch_envelope_status(window_log):
         status_message = result.get("StatusMessage", "")
         message = result.get("Message", "")
         # Combine StatusMessage and Message with a space in between
-        combined_message = f"Status message = {status_message}, Message = {message}"
+        combined_message = f"Status message = '{status_message}', Message = '{message}'"
         window_log.AddTextInWindowLog(combined_message)
     except Exception as e:
         print("Error with fetching envelope status: ", e)
