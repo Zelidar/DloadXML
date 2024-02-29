@@ -1,36 +1,36 @@
 TemplateCode: 62673
 
 Control Data
-ControlID  ¦  ControlLabel  ¦  ControlValue  ¦  ControlName  ¦  RoleName
-1: eb5fe1bf-65e8-4f56-9a3f-013913614018 ¦ Married ¦  ¦ labelControl ¦ None
-2: 8a9a4f50-1e78-4532-a2cc-2505e1e9c9ec ¦ Dropdown control assigned to Customer ¦  ¦ DropDownControl ¦ Customer
-3: 4cfa58ef-854f-49be-b0d5-25aeb028eb89 ¦ Widowed ¦ false ¦ radioControl ¦ Customer
-4: 77ee9860-5987-4a8c-b430-367aedfb1361 ¦ CustEntryText1 ¦  ¦ textControl ¦ Customer
-5: 192aaab0-a4fb-45bf-a941-45ae2be84538 ¦ CustLongString1 ¦  ¦ textControl ¦ Customer
-6: 29e35eba-c17d-4429-8c92-4f51819598d8 ¦ CustEntryText2 ¦  ¦ textControl ¦ Customer
-7: e2936ae9-e3ee-4b27-b5a0-572b7305d736 ¦ CustomerNbr ¦  ¦ labelControl ¦ None
-8: fc6686ea-1e29-4767-b050-6fe491f9fa88 ¦ ContractNbr ¦  ¦ labelControl ¦ None
-9: 8e2390ef-5344-4981-9c27-9bdff57fc4c5 ¦ Signature ¦  ¦ signControl ¦ Company
-10: 933ee919-9439-46b5-81db-a8aaa42e734a ¦ Signature ¦  ¦ signControl ¦ Customer
-11: f382064b-b012-4c06-b970-b332bafc400c ¦ Single ¦  ¦ labelControl ¦ None
-12: f6ffbff9-b482-4935-8b25-bc0d1f9937ea ¦ CustLongString2 ¦  ¦ textControl ¦ Customer
-13: a4874fdf-f52c-4f5a-a456-c3703eece6cb ¦ Married ¦ false ¦ radioControl ¦ Customer
-14: 320b437f-b651-4bde-851f-ca183ba87330 ¦ Widowed ¦  ¦ labelControl ¦ None
-15: ae1bcc11-4275-4b1a-bcc9-dbe49ff39ebb ¦ Single ¦ true ¦ radioControl ¦ Customer
-16: 4164638a-48cd-48e1-b8e2-f0df505240e6 ¦ Date & Time Stamp ¦  ¦ dateTimeStampControl ¦ Company
-17: c7b16d1b-e7dc-435f-b8ff-f9558589f5fb ¦ Date & Time Stamp ¦  ¦ dateTimeStampControl ¦ Customer
+ControlID  ï¿½  ControlLabel  ï¿½  ControlValue  ï¿½  ControlName  ï¿½  RoleName
+1: eb5fe1bf-65e8-4f56-9a3f-013913614018 ï¿½ Married ï¿½  ï¿½ labelControl ï¿½ None
+2: 8a9a4f50-1e78-4532-a2cc-2505e1e9c9ec ï¿½ Dropdown control assigned to Customer ï¿½  ï¿½ DropDownControl ï¿½ Customer
+3: 4cfa58ef-854f-49be-b0d5-25aeb028eb89 ï¿½ Widowed ï¿½ false ï¿½ radioControl ï¿½ Customer
+4: 77ee9860-5987-4a8c-b430-367aedfb1361 ï¿½ CustEntryText1 ï¿½  ï¿½ textControl ï¿½ Customer
+5: 192aaab0-a4fb-45bf-a941-45ae2be84538 ï¿½ CustLongString1 ï¿½  ï¿½ textControl ï¿½ Customer
+6: 29e35eba-c17d-4429-8c92-4f51819598d8 ï¿½ CustEntryText2 ï¿½  ï¿½ textControl ï¿½ Customer
+7: e2936ae9-e3ee-4b27-b5a0-572b7305d736 ï¿½ CustomerNbr ï¿½  ï¿½ labelControl ï¿½ None
+8: fc6686ea-1e29-4767-b050-6fe491f9fa88 ï¿½ ContractNbr ï¿½  ï¿½ labelControl ï¿½ None
+9: 8e2390ef-5344-4981-9c27-9bdff57fc4c5 ï¿½ Signature ï¿½  ï¿½ signControl ï¿½ Company
+10: 933ee919-9439-46b5-81db-a8aaa42e734a ï¿½ Signature ï¿½  ï¿½ signControl ï¿½ Customer
+11: f382064b-b012-4c06-b970-b332bafc400c ï¿½ Single ï¿½  ï¿½ labelControl ï¿½ None
+12: f6ffbff9-b482-4935-8b25-bc0d1f9937ea ï¿½ CustLongString2 ï¿½  ï¿½ textControl ï¿½ Customer
+13: a4874fdf-f52c-4f5a-a456-c3703eece6cb ï¿½ Married ï¿½ false ï¿½ radioControl ï¿½ Customer
+14: 320b437f-b651-4bde-851f-ca183ba87330 ï¿½ Widowed ï¿½  ï¿½ labelControl ï¿½ None
+15: ae1bcc11-4275-4b1a-bcc9-dbe49ff39ebb ï¿½ Single ï¿½ true ï¿½ radioControl ï¿½ Customer
+16: 4164638a-48cd-48e1-b8e2-f0df505240e6 ï¿½ Date & Time Stamp ï¿½  ï¿½ dateTimeStampControl ï¿½ Company
+17: c7b16d1b-e7dc-435f-b8ff-f9558589f5fb ï¿½ Date & Time Stamp ï¿½  ï¿½ dateTimeStampControl ï¿½ Customer
 
 --
 
 Envelope Data
-SentDate  ¦  Status  ¦  EnvelopeCode  ¦  SenderName  ¦  Subject
-1: 2024-02-15T07:16:12.26 ¦ Completed ¦ 03615419-8101-BFFD-9105-FDEF ¦ Zaid ElHoiydiTC ¦ Required Personal Information
-2: 2024-02-15T07:00:39.87 ¦ Completed ¦ 66655955-4697-AFDA-5871-BCED ¦ Zaid ElHoiydiTC ¦ Required Personal Information
-3: 2024-02-15T06:33:04.897 ¦ Completed ¦ 32071790-1414-CCCD-5854-BAAF ¦ Zaid ElHoiydiTC ¦ Required Personal Information
-4: 2024-02-13T10:30:37.263 ¦ Completed ¦ 24297154-7577-BAFE-2794-ABED ¦ Zaid ElHoiydiTC ¦ Here is your rental contract (from app)
-5: 2024-02-13T10:18:13.333 ¦ Completed ¦ 75329347-0722-DBED-2865-CFBD ¦ Zaid ElHoiydiTC ¦ Here is your rental contract (from app)
-6: 2024-02-13T10:18:00.087 ¦ Completed ¦ 34193796-5522-EAAC-4270-CCFC ¦ Zaid ElHoiydiTC ¦ Here is your rental contract (from app)
-7: 2024-02-09T17:45:56.413 ¦ Completed ¦ 07752129-0327-ACCA-8556-BACF ¦ Zaid ElHoiydiTC ¦ Here is your rental contract (from app)
+SentDate  ï¿½  Status  ï¿½EnvelopeIDde  ï¿½  SenderName  ï¿½  Subject
+1: 2024-02-15T07:16:12.26 ï¿½ Completed ï¿½ 03615419-8101-BFFD-9105-FDEF ï¿½ Zaid ElHoiydiTC ï¿½ Required Personal Information
+2: 2024-02-15T07:00:39.87 ï¿½ Completed ï¿½ 66655955-4697-AFDA-5871-BCED ï¿½ Zaid ElHoiydiTC ï¿½ Required Personal Information
+3: 2024-02-15T06:33:04.897 ï¿½ Completed ï¿½ 32071790-1414-CCCD-5854-BAAF ï¿½ Zaid ElHoiydiTC ï¿½ Required Personal Information
+4: 2024-02-13T10:30:37.263 ï¿½ Completed ï¿½ 24297154-7577-BAFE-2794-ABED ï¿½ Zaid ElHoiydiTC ï¿½ Here is your rental contract (from app)
+5: 2024-02-13T10:18:13.333 ï¿½ Completed ï¿½ 75329347-0722-DBED-2865-CFBD ï¿½ Zaid ElHoiydiTC ï¿½ Here is your rental contract (from app)
+6: 2024-02-13T10:18:00.087 ï¿½ Completed ï¿½ 34193796-5522-EAAC-4270-CCFC ï¿½ Zaid ElHoiydiTC ï¿½ Here is your rental contract (from app)
+7: 2024-02-09T17:45:56.413 ï¿½ Completed ï¿½ 07752129-0327-ACCA-8556-BACF ï¿½ Zaid ElHoiydiTC ï¿½ Here is your rental contract (from app)
 
 
 ---

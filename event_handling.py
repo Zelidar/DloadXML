@@ -3,12 +3,18 @@ from collecting_user_info import CollectedUserInfo
 from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope, SendEnvelopeFromRule
 from input_validation import UserInputValidator
 import threading
+import queue
 from file_logging import log_message
 
 validator = UserInputValidator()
 
-def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, window_log):
-    global EnvelopeCode
+def handle_submission(name, 
+                      email, 
+                      CustomerNbr, 
+                      ContractNbr, 
+                      CustomerString, 
+                      window_log, 
+                      EnvelopeID):
     if validator.validate_email(email) and \
        validator.validate_name(name) and \
        validator.validate_number(ContractNbr) and \
@@ -18,68 +24,67 @@ def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, win
         log_message(name)
         log_message(email)
 
+        result_queue = queue.Queue()
         # Run the send_email in a separate thread to avoid GUI freeze
-        thread = threading.Thread(target=send_email, args=(email, 
+        thread = threading.Thread(target=send_email, 
+                                  args=(email, 
                                         name, 
                                         CustomerNbr, 
                                         ContractNbr, 
                                         CustomerString, 
-                                        window_log))
+                                        window_log,
+                                        EnvelopeID, result_queue))
         thread.start()
+        #  Wait for the EnvelopeID in the queue, you may optionally add a timeout here
+        EnvelopeID = result_queue.get()
+        print(f"Received EnvelopeID from thread: {EnvelopeID}")
+        return EnvelopeID
     else:
         messagebox.showerror("Error", "Invalid submission details")
+        return None
 
 
-def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log):
+def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log, EnvelopeID, result_queue):
     try:
-        global EnvelopeCode
-
-        # EnvelopeCode = SimCall("10561868-5872-AFAB-4282-DECC")
-        # result = SimCall("A call to the RSign API was simulated")
-
         # Call the SendEnvelope function with email, 
         # name, and the data provided by the CRM.
         response = SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString)
-
         # Extract the required items
-        EnvelopeCode = response['EnvelopeCode']
-
-        window_log.AddTextInWindowLog(f"Current envelope code: {EnvelopeCode}")
-        print(f"Current envelope code: {EnvelopeCode}")
+        EnvelopeID = response['EnvelopeCode']
+        result_queue.put(EnvelopeID)  # Put the result into the queue
+        window_log.AddTextInWindowLog(f"Current envelope id: {EnvelopeID}")
+        print(f"Current envelope code: {EnvelopeID}")
         window_log.APIcallOk(name, email)
-
-        # Assuming each recipient in the list has 'RecipientName' and 'RecipientEmail'
-        # for recipient in RecipientList:
-        #     RecipientName = recipient['RecipientName']
-        #     RecipientEmail = recipient['RecipientEmail']
-
-            # Print or use the extracted information
-            # print(f"RecipientName: {RecipientName}")
-            # print(f"RecipientEmail: {RecipientEmail}")
-
-        # Handle the result (e.g., update GUI or log)
+    
     except Exception as e:
         print("Error during email sending:", e)
         messagebox.showerror("Error", "send_email call failed")
+        result_queue.put(None)
 
 
-def fetch_user_data(window):
+def fetch_user_data(window_user_data, window_log, EnvelopeID):
+    if EnvelopeID is None:  
+        window_log.AddTextInWindowLog("(fetch_user_data) EnvelopeID is required. Did you create an envelope?")
+        return  
     try:
-        global EnvelopeCode
+        if EnvelopeID is None:  # Check if EnvelopeID is provided
+            window_user_data.AddTextInWindowLog("EnvelopeID is required. Did you create an envelope?")
+            return  # Exit the function if no EnvelopeID
         userElements = [
-            'CustomerNbr',
-            'ContractNbr',
+            'CrmCustomerNbr',
+            'CrmContractNbr',
             'CustLongString1',
             'CustLongString2',
             'CustEntryText1',
             'CustEntryText2',
-            'Dropdown control assigned to Customer',
-            'Single',
-            'Married',
-            'Widowed'
+            'DropDownControl',
+            'Saturn',
+            'Uranus',
+            'Neptune',
+            'Earth'
         ]
-        result = GetUserData(EnvelopeCode, userElements)
-        userInfoWindow = CollectedUserInfo(window)
+        result = GetUserData(EnvelopeID, userElements)
+        userInfoWindow = CollectedUserInfo(window_user_data)
         userInfoWindow.create_user_info_window()
         userInfoWindow.update_info_display(result)
         # print(result)
@@ -88,10 +93,12 @@ def fetch_user_data(window):
         messagebox.showerror("Error", "GetUserData API call failed")
 
 
-def fetch_envelope_status(window_log):
+def fetch_envelope_status(window_log, EnvelopeID):
+    if EnvelopeID is None:  
+        window_log.AddTextInWindowLog("(fetch_envelope_status) EnvelopeID is required. Did you create an envelope?")
+        return  
     try:
-        global EnvelopeCode
-        result = GetEnvelopeStatus(EnvelopeCode)
+        result = GetEnvelopeStatus(EnvelopeID)
         # Extract StatusMessage and Message from the result
         status_message = result.get("StatusMessage", "")
         message = result.get("Message", "")

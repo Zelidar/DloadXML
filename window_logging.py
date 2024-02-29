@@ -2,9 +2,10 @@ import tkinter as tk
 import datetime
 
 class WindowInfoLog:
-    def __init__(self, root):
+    def __init__(self, root, EnvelopeID):
         self.root = root  # Store root for later use
         self.info_window = None  # Delay creation
+        self.EnvelopeID = EnvelopeID
         self.text_widget = None
         self.user_entries = []
 

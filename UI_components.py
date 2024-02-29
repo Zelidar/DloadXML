@@ -14,11 +14,10 @@ def generate_number():
     return f'00{number:4}'  # Format the number as a string with leading zeros
 
 class UserInputApp:
-    EnvelopeCode = None
-    def __init__(self, root, window_log, EnvelopeCode):
+    def __init__(self, root, window_log, EnvelopeID):
         self.window_log = window_log
         self.root = root
-        self.EnvelopeCode = EnvelopeCode
+        self.EnvelopeID = EnvelopeID
         self.root.title("CRM Simulation")
         entry_width = 16
         large_entry_width = 32
@@ -101,19 +100,20 @@ class UserInputApp:
         self.fetch_data_button.pack(pady=(0,10))
 
     def SubmitContract(self, event=None):
-        handle_submission(self.name_entry.get(), 
-                          self.email_entry.get(), 
-                          self.CrmCustNbr_entry.get(), 
-                          self.CrmContractNbr_entry.get(), 
-                          self.CrmCustString_entry.get(), 
-                          self.window_log)
+        self.EnvelopeID = handle_submission(self.name_entry.get(), 
+                                            self.email_entry.get(), 
+                                            self.CrmCustNbr_entry.get(), 
+                                            self.CrmContractNbr_entry.get(), 
+                                            self.CrmCustString_entry.get(), 
+                                            self.window_log,
+                                            self.EnvelopeID)
         self.DefaultEntries()
 
     def GettingEnvStatus(self, event=None):
-        fetch_envelope_status(self.window_log)
+        fetch_envelope_status(self.window_log, self.EnvelopeID)
 
     def GettingUserData(self, event=None):
-        fetch_user_data(self.root)
+        fetch_user_data(self.root, self.window_log, self.EnvelopeID)
 
 
     def DefaultEntries(self):

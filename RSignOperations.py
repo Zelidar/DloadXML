@@ -1,14 +1,20 @@
-# Setting the environment to connecto to RSign
+# Setting the environment to connect to the RSign API
 import json
 import requests
-# Fetching RPost API credentials and URL
-from GettingRSignAuthToken import GetAuthToken, BaseURL
 
+# Imports required to handle files i/o
 import base64
 import os
+
 import xml.etree.ElementTree as ET
 
+# For simulating an API call (taking some time)
 import time
+
+# Fetching my RPost API credentials and the RSign API sandbox URL
+from GettingRSignAuthToken import GetAuthToken, BaseURL
+
+
 def SimCall(SimCallNumber):
     time.sleep(3)
     print(f"A RSign call was simulated returning: {SimCallNumber}")
@@ -47,12 +53,13 @@ def GetEnvelopeInfo():
     # Format the dates in the required format (mm/dd/YYYY)
     start_date_str = start_date.strftime("%m/%d/%Y")
     end_date_str = current_time.strftime("%m/%d/%Y")
-    # Define the payload with the calculated start and end dates
+    # Define the payload with the calculated start and end dates,
+    # this only to limit the number of envelopes in the response.
     payload = {
         "StartDate": start_date_str,
         "EndDate": end_date_str,
         "Period": 24,
-        "MasterEnvelopeCode": "",
+        "MasterEnvelopeID": "",
         "SenderEmail": "zaid.el-hoiydi_tc@frama.com",
         "SignerEmail": "",
         "Status": "Completed;Terminated",
@@ -65,9 +72,9 @@ def GetEnvelopeInfo():
     return response.json()
 
 
-def GetUserData(EnvelopeCode, userElements):
-    GetEndpointString = '/api/V1/Manage/GetDownloadeDataByCode/' + str(EnvelopeCode)
-    headers = {'AuthToken': GetAuthToken()}  # Ensure GetAuthToken() is defined elsewhere
+def GetUserData(EnvelopeID, userElements):
+    GetEndpointString = '/api/V1/Manage/GetDownloadeDataByCode/' + str(EnvelopeID)
+    headers = {'AuthToken': GetAuthToken()}
     query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
     json_data = response.json()
@@ -86,7 +93,6 @@ def GetUserData(EnvelopeCode, userElements):
                 text_value = control.attrib.get('text')
                 if label not in elements_dict:
                     elements_dict[label] = []
-                # elements_dict[label].append({'Name': label, 'Text': text_value})
                 elements_dict[label].append(text_value)
     else:
         # Handle cases where Base64FileData is not present or empty
@@ -99,6 +105,8 @@ def LoadB64dataForRule():
     docx_template_file = base_filename + '.docx'
     b64_template_file = base_filename + '.b64'
 
+    # This will check is a b64 file is already present,
+    # it will otherwise perform a docx to b64 conversion.
     if os.path.exists(b64_template_file):
         print(f"Loading B64 template from {b64_template_file}")
         with open(b64_template_file, 'r') as file:
@@ -128,8 +136,8 @@ def GetTemplateInfo(TemplateCode):
     return response.json()
 
 
-def GetEnvelopeStatus(EnvelopeCode):
-    GetEndpointString = '/api/V1/Envelope/GetEnvelopeStatus/' + str(EnvelopeCode)
+def GetEnvelopeStatus(EnvelopeID):
+    GetEndpointString = '/api/V1/Envelope/GetEnvelopeStatus/' + str(EnvelopeID)
     headers = {'AuthToken': GetAuthToken()}
     query = BaseURL + GetEndpointString
     response = requests.get(query, headers=headers)
@@ -167,7 +175,7 @@ def SendEnvelopeFromTemplate(email, name):
     # The TemplateCode and the RoleID can be obtained using respectively
     # GetTemplateData() and GetTemplateInfo() implemented above.
     
-    TemplateCode = 62651
+    TemplateCode = 62651    # This needs to correspond to the below RoleID
     EmailSubject = "Here is your membership application"
     RecipientRoleID = "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9"
 
@@ -198,11 +206,11 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
     }
-    TemplateCode = 62673  # This needs to correspond to the below RoleName and ControlId
+    TemplateCode = 62830  # This needs to correspond to the below RoleID and ControlId
 
     EmailSubject = "Contract Document (sent from CRM)"
 
-    data = { # To be updated accordingly
+    data = {
         "TemplateCode": TemplateCode,
         "Subject": EmailSubject,
         "SigningMethod": 0,
@@ -214,32 +222,72 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
         ],
         "TemplateRoleRecipientMapping": [
             {
-                "RoleID": "8ec6a891-0f10-4aca-8183-4d22db911801",
+                "RoleID": "618f7bfa-6985-4134-98bd-1c8d00580022",
                 "RecipientEmail": email,
                 "RecipientName": name,
             },
             {
-                "RoleID": "1bc66b98-50a4-452c-872b-ed19c44f8adf",
+                "RoleID": "84cd5ebb-7328-4347-96ba-15315f1a0cc6",
                 "RecipientEmail": "zaid.el-hoiydi@frama.com",
                 "RecipientName": "Company Administration"
             }
             ],
             "UpdateControls": [
             {
-            "ControlID": "4348e7e5-9b71-4861-aea7-eeb5cb03cdd1",
+            "ControlID": "3fa6f6c6-5f02-4c62-b261-5ea5dc130f01",
             "IsReadOnly": True,
             "ControlValue": CustomerNbr,
             },
             {
-            "ControlID": "2fd8505b-9fbf-4ec4-896c-212b3d5a22a3",
+            "ControlID": "e8f2b396-adc2-4182-b3da-7bbb53186bbd",
             "IsReadOnly": True,
             "ControlValue": ContractNbr,
             },
             {
-            "ControlID": "73e44240-c5f0-4b78-bd74-c7a2247d3974",
+            "ControlID": "a57f2d15-e573-451a-9355-fc2bf435a9b5",
             "IsReadOnly": False,
-            "ControlValue": CustomerString,
-            } 
+            "ControlValue": CustomerString, # CustLongString1
+            },
+            {
+            "ControlID": "615e9b89-376d-443d-b7e7-1f7e9169eef4",
+            "IsReadOnly": True,
+            "ControlValue": "What do you like?",
+            },
+            {
+            "ControlID": "52718ff0-6a29-47b3-8096-dc27e508a4e8",
+            "IsReadOnly": True,
+            "ControlValue": "Current Residence?",
+            },
+            {
+            "ControlID": "91e128e7-93df-4307-8ec5-7af7c66f213d",
+            "IsReadOnly": True,
+            "ControlValue": name,
+            },
+            {
+            "ControlID": "fb69b366-afec-4d1f-a101-4826c35fd5c7",
+            "IsReadOnly": True,
+            "ControlValue": email,
+            },
+            { # Radio button text
+            "ControlID": "9d07ceb7-4204-49d5-8bb3-ad2473d4ebc1",
+            "IsReadOnly": True,
+            "ControlValue": "Earth - 12'756 km",
+            },
+            { # Radio button text
+            "ControlID": "f18dcf33-c2a4-4bb9-bd41-a026289c433f",
+            "IsReadOnly": True,
+            "ControlValue": "Neptune - 49'526 km",
+            },
+            { # Radio button text
+            "ControlID": "fca1d984-107f-4e7b-803b-b1931c2dc1b3",
+            "IsReadOnly": True,
+            "ControlValue": "Saturn - 116'464 km",
+            },
+            { # Radio button text
+            "ControlID": "5e64432e-5c82-41ef-a7bc-b1ecd9434adf",
+            "IsReadOnly": True,
+            "ControlValue": "Uranus, 50'724 km"
+            }
         ]
     }
 
@@ -259,7 +307,7 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
     }
-    TemplateCode = 62673  # This needs to correspond to the below RoleID
+    TemplateCode = 62830  # This needs to correspond to the below RoleID and ControlId
 
     # Section for the signer
     EmailSubject = "Here is a Health History Form (sent from CRM)"

@@ -1,7 +1,7 @@
 {
     "DialCodeDropdownList": null,
     "EnableMessageToMobile": "false",
-    "EnvelopeCode": "55274209-5939-FCBC-8950-FCDA",
+    "EnvelopeID": "55274209-5939-FCBC-8950-FCDA",
     "EnvelopeId": "d6686304-3218-43b7-afe7-e69e3a3b272c",
     "LanguageBasedApiMessge": null,
     "Message": "Envelope has been sent. Please fill the Prefill details, to send the envelope for further signing.",
