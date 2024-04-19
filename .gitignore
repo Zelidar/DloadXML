@@ -1,5 +1,7 @@
 /Template62673.png
 /~$oadXML.docx
+*.pyc
+__pycache__/
 myTestCompany.py
 operation_log.txt
 DloadXML.from CRM.pdf
@@ -15,3 +17,4 @@ DloadXMLScreenshotsWithLabels.gif
 DloadXMLb64.ok1.pdf
 DloadXMLb64.ok2.pdf
 GetTemplateInfo.62830.json
+DloadXMLb64.b64

@@ -206,7 +206,7 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
     }
-    TemplateCode = 62830  # This needs to correspond to the below RoleID and ControlId
+    TemplateCode = 65581  # This needs to correspond to the below RoleID and ControlId
 
     EmailSubject = "Contract Document (sent from CRM)"
 
@@ -222,72 +222,77 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
         ],
         "TemplateRoleRecipientMapping": [
             {
-                "RoleID": "618f7bfa-6985-4134-98bd-1c8d00580022",
+                "RoleID": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
                 "RecipientEmail": email,
                 "RecipientName": name,
             },
             {
-                "RoleID": "84cd5ebb-7328-4347-96ba-15315f1a0cc6",
+                "RoleID": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
                 "RecipientEmail": "zaid.el-hoiydi@frama.com",
                 "RecipientName": "Company Administration"
             }
             ],
             "UpdateControls": [
             {
-            "ControlID": "3fa6f6c6-5f02-4c62-b261-5ea5dc130f01",
+            "ControlID": "9ecb8bd8-0352-476d-9981-267da1d3f891",
             "IsReadOnly": True,
             "ControlValue": CustomerNbr,
             },
             {
-            "ControlID": "e8f2b396-adc2-4182-b3da-7bbb53186bbd",
+            "ControlID": "4df3b132-577a-4ddc-a067-0bb3ffd01e55",
             "IsReadOnly": True,
             "ControlValue": ContractNbr,
             },
             {
-            "ControlID": "a57f2d15-e573-451a-9355-fc2bf435a9b5",
+            "ControlID": "8b9f98aa-1cd8-46cf-ad81-bf2cdc28afb1",
             "IsReadOnly": False,
             "ControlValue": CustomerString, # CustLongString1
             },
             {
-            "ControlID": "615e9b89-376d-443d-b7e7-1f7e9169eef4",
-            "IsReadOnly": True,
-            "ControlValue": "What do you like?",
+            "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
+            "IsReadOnly": False,
+            "ControlValue": "Enter your text here", # CustLongString2
             },
             {
-            "ControlID": "52718ff0-6a29-47b3-8096-dc27e508a4e8",
-            "IsReadOnly": True,
-            "ControlValue": "Current Residence?",
+            "ControlID": "30a80604-a4a5-471a-acdd-45cae6790b03",
+            "IsReadOnly": False,
+            "ControlValue": "Your text here", # CustEntryText1
             },
             {
-            "ControlID": "91e128e7-93df-4307-8ec5-7af7c66f213d",
-            "IsReadOnly": True,
-            "ControlValue": name,
+            "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
+            "IsReadOnly": False,
+            "ControlValue": "You text here", # CustEntryText2
             },
             {
-            "ControlID": "fb69b366-afec-4d1f-a101-4826c35fd5c7",
+            "ControlID": "902966d1-f54f-45d1-940a-daef47416b37",
             "IsReadOnly": True,
-            "ControlValue": email,
+            "ControlValue": "What do you like?", # DropDownControl
+            },
+            {
+            "ControlID": "c8263488-cbef-41ff-8f15-24fd95ffde6a",
+            "IsReadOnly": True,
+            "ControlValue": name, # nameControl
+            },
+            {
+            "ControlID": "a0215f88-188f-4692-b774-01c5ef152643",
+            "IsReadOnly": True,
+            "ControlValue": email, #emailControl
             },
             { # Radio button text
-            "ControlID": "9d07ceb7-4204-49d5-8bb3-ad2473d4ebc1",
+            "ControlID": "28911b85-a2d6-4d8e-98c3-d3b0177cc709",
             "IsReadOnly": True,
             "ControlValue": "Earth - 12'756 km",
             },
             { # Radio button text
-            "ControlID": "f18dcf33-c2a4-4bb9-bd41-a026289c433f",
+            "ControlID": "b54eb008-ad68-4f9b-8ff5-815e62f9f4c7",
             "IsReadOnly": True,
             "ControlValue": "Neptune - 49'526 km",
             },
             { # Radio button text
-            "ControlID": "fca1d984-107f-4e7b-803b-b1931c2dc1b3",
+            "ControlID": "84e07b2e-af93-4824-9fde-f0098e0ca4f6",
             "IsReadOnly": True,
             "ControlValue": "Saturn - 116'464 km",
             },
-            { # Radio button text
-            "ControlID": "5e64432e-5c82-41ef-a7bc-b1ecd9434adf",
-            "IsReadOnly": True,
-            "ControlValue": "Uranus, 50'724 km"
-            }
         ]
     }
 
