@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 import time
 
 # Fetching my RPost API credentials and the RSign API sandbox URL
-from GettingRSignAuthToken import GetAuthToken, BaseURL
+from py.GettingRSignAuthToken import GetAuthToken, BaseURL
 
 
 def SimCall(SimCallNumber):
@@ -249,7 +249,7 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
             "ControlValue": CustomerString, # CustLongString1
             },
             {
-            "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
+            "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
             "IsReadOnly": False,
             "ControlValue": "Enter your text here", # CustLongString2
             },
@@ -259,7 +259,7 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
             "ControlValue": "Your text here", # CustEntryText1
             },
             {
-            "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
+            "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
             "IsReadOnly": False,
             "ControlValue": "You text here", # CustEntryText2
             },

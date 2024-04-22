@@ -1,10 +1,10 @@
 from tkinter import messagebox  # Import messagebox explicitly
-from collecting_user_info import CollectedUserInfo
-from RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope, SendEnvelopeFromRule
-from input_validation import UserInputValidator
+from py.collecting_user_info import CollectedUserInfo
+from py.RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope, SendEnvelopeFromRule
+from py.input_validation import UserInputValidator
 import threading
 import queue
-from file_logging import log_message
+from py.file_logging import log_message
 
 validator = UserInputValidator()
 

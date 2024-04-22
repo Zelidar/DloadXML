@@ -2,7 +2,7 @@ import tkinter as tk
 import random
 from datetime import datetime
 from tkinter import ttk, font as tkFont
-from event_handling import handle_submission, fetch_user_data, fetch_envelope_status
+from py.event_handling import handle_submission, fetch_user_data, fetch_envelope_status
 
 def get_current_datetime():
     now = datetime.now()

@@ -1,6 +1,6 @@
 import tkinter as tk
-from UI_components import UserInputApp
-from window_logging import WindowInfoLog
+from py.UI_components import UserInputApp
+from py.window_logging import WindowInfoLog
 
 EnvelopeID = None
 

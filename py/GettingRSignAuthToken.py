@@ -1,6 +1,6 @@
 import os
 import requests
-from myTestCompany import ReferenceKey, EmailId, Password
+from py.myTestCompany import ReferenceKey, EmailId, Password
 
 BaseURL = 'https://api3.use.rsign.com'  # RSign Sandbox
 AuthenticateIUser = '/api/V1/Authentication/AuthenticateIUser'
