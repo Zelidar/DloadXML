@@ -1,0 +1,25 @@
+'{"TemplateCode": 65581, 
+"Subject": "Contract Document (sent from CRM)", 
+"SigningMethod": 0, 
+"Documents": [{"Name": "DloadXMLb64.docx", 
+"DocumentBase64Data": "UEs...A="}], 
+"TemplateRoleRecipientMapping": [
+{"RoleID": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4", "RecipientEmail": "zaid.el-hoiydi@frama.com", "RecipientName": "Zaid El-Hoiydi"},
+{"RoleID": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b", "RecipientEmail": "zaid.el-hoiydi@frama.com", "RecipientName": "Company Administration"}], 
+"UpdateControls": [
+{"ControlID": "9ecb8bd8-0352-476d-9981-267da1d3f891", "IsReadOnly": true, "ControlValue": "CRM_0025292"},
+{"ControlID": "4df3b132-577a-4ddc-a067-0bb3ffd01e55", "IsReadOnly": true, "ControlValue": "CRM_0043214"},
+{"ControlID": "8b9f98aa-1cd8-46cf-ad81-bf2cdc28afb1", "IsReadOnly": false, "ControlValue": "CRM_2024-April-22 10:44:53"},
+{"ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f", "IsReadOnly": false, "ControlValue": "Enter your text here"},
+{"ControlID": "30a80604-a4a5-471a-acdd-45cae6790b03", "IsReadOnly": false, "ControlValue": "Your text here"},
+{"ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2", "IsReadOnly": false, "ControlValue": "You text here"},
+{"ControlID": "902966d1-f54f-45d1-940a-daef47416b37", "IsReadOnly": true, "ControlValue": "What do you like?"},
+{"ControlID": "c8263488-cbef-41ff-8f15-24fd95ffde6a", "IsReadOnly": true, "ControlValue": "Zaid El-Hoiydi"},
+{"ControlID": "a0215f88-188f-4692-b774-01c5ef152643", "IsReadOnly": true, "ControlValue": "zaid.el-hoiydi@frama.com"},
+{"ControlID": "28911b85-a2d6-4d8e-98c3-d3b0177cc709", "IsReadOnly": true, "ControlValue": "Earth - 12\'756 km"},
+{"ControlID": "b54eb008-ad68-4f9b-8ff5-815e62f9f4c7", "IsReadOnly": true, "ControlValue": "Neptune - 49\'526 km"},
+{"ControlID": "84e07b2e-af93-4824-9fde-f0098e0ca4f6", "IsReadOnly": true, "ControlValue": "Saturn - 116\'464 km"}
+]}'
+
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

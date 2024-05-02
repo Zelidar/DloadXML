@@ -4,7 +4,7 @@ from py.RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynE
 from py.input_validation import UserInputValidator
 import threading
 import queue
-from py.file_logging import log_message
+from py.FileLogging import log_message
 
 validator = UserInputValidator()
 
@@ -49,17 +49,29 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log
         # Call the SendEnvelope function with email, 
         # name, and the data provided by the CRM.
         response = SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString)
-        # Extract the required items
-        EnvelopeID = response['EnvelopeCode']
-        result_queue.put(EnvelopeID)  # Put the result into the queue
-        window_log.AddTextInWindowLog(f"Current envelope id: {EnvelopeID}")
-        print(f"Current envelope code: {EnvelopeID}")
-        window_log.APIcallOk(name, email)
-    
+        
+        # Check if the response was successful
+        if isinstance(response, dict) and 'EnvelopeCode' in response:
+            # Extract the required items
+            EnvelopeID = response['EnvelopeCode']
+            result_queue.put(EnvelopeID)  # Put the result into the queue
+            window_log.AddTextInWindowLog(f"Current envelope id: {EnvelopeID}")
+            print(f"Current envelope code: {EnvelopeID}")
+            window_log.APIcallOk(name, email)
+        else:
+            # Handle unsuccessful response
+            error_message = response  # Assuming response is the error message string as 'else' in SendEnvelopeFromRule
+            print("Error during sending:", error_message)
+            window_log.AddTextInWindowLog(f"Error: {error_message}")
+            messagebox.showerror("Error", f"send_email call failed: {error_message}")
+            result_queue.put(None)
+
     except Exception as e:
+        # This will only handle unexpected errors not related to response handling
         print("Error during email sending:", e)
         messagebox.showerror("Error", "send_email call failed")
         result_queue.put(None)
+
 
 
 def fetch_user_data(window_user_data, window_log, EnvelopeID):

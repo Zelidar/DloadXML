@@ -1,0 +1,38 @@
+{
+    "EnvelopeCode": "13277323-3433-FABE-6238-FEAB",
+    "TransparencyChangedMessage": null,
+    "LanguageBasedApiMessge": null,
+    "PrefillRecipientId": null,
+    "PostSendingNavigationPage": null,
+    "StatusCode": 200,
+    "StatusMessage": "OK",
+    "Message": "Email successfully sent.",
+    "EnvelopeId": "2a38569c-aa20-4d51-a5f5-10f6673083f7",
+    "SignDoumentUrl": null,
+    "RecipientList": [
+        {
+            "RecipientName": "Administrator",
+            "RecipientEmail": "zaid.el-hoiydi_tc@frama.com",
+            "Order": 2,
+            "Type": "Signer",
+            "DeliveryMode": null,
+            "DialCode": "",
+            "CountryCode": "",
+            "Mobile": "",
+            "SigningUrl": "https://sign.use.rsign.com//SignDocument/Index?EM7KGynBr6npHEAQ8ZiaAI5i6f5XnjPLi612U67RAAAUEJ04urAWTSBZaVAP7r%2b%2fgnzOVyi5Hal8PQs%2fdG%2fkGrda7boNY1muX7BK8rxfoxhYFQChN56ZJtNdkuroF9qPTzr%2foUzd0jbD9QXfDNibfpG0SgwpEyeAc4BGhRzVLFjTLhHwzqbDjw%3d%3d"
+        },
+        {
+            "RecipientName": "Renter",
+            "RecipientEmail": "timgat@gmail.com",
+            "Order": 1,
+            "Type": "Signer",
+            "DeliveryMode": null,
+            "DialCode": "",
+            "CountryCode": "",
+            "Mobile": "",
+            "SigningUrl": "https://sign.use.rsign.com//SignDocument/Index?EM7KGynBr6npHEAQ8ZiaAI5i6f5XnjPLi612U67RAAAUEJ04urAWTSBZaVAP7r%2b%2fgnzOVyi5HalftJjH%2fLcd3SfEJQCl7EgD5Zh2KYyrcGXMSG%2fkS6K8hKnjA0zDyZTwne887uq9gh2OJu%2bSO7CfkIiKvU338RPThpe4s5f68IQ%3d"
+        }
+    ],
+    "DialCodeDropdownList": null,
+    "EnableMessageToMobile": "false"
+}

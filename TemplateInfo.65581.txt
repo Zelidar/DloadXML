@@ -1,0 +1,339 @@
+{
+    "StatusCode": 200,
+    "StatusMessage": "OK",
+    "Message": "Template found",
+    "TemplateId": null,
+    "TemplateBasicInfo": {
+        "TemplateId": "62f91aae-e042-4376-aa08-4aeca9c7b9d6",
+        "TemplateCode": 65581,
+        "UserEmail": "zaid.el-hoiydi_tc@frama.com",
+        "TemplateName": "DloadXMLb64.docx",
+        "TemplateDescription": "Sample Rule for the DloadXML Demo",
+        "IsStatic": null,
+        "ExpiryDate": "2024-07-20T00:00:00",
+        "CreatedDate": "2024-04-19T14:49:10.467",
+        "LastModifiedDate": "2024-04-22T09:33:03.04",
+        "Subject": "Residential Lease Agreement",
+        "Body": "Dear Herman Melville<br />\r\n<br />\r\nEnclosed in this email is a link to our leasing agreement for you to review and sign. It was made according to our last discussion, with both the form and the content which we have agreed on.<br />\r\n<br />\r\nMake sure you also agree with our Residential <a href=\"https://en.wikipedia.org/wiki/Code_of_conduct\">Rules of Conduct</a> which you will find on our <a href=\"https://en.wikipedia.org/wiki/Main_Page\">website</a>.<br />\r\n<br />\r\nLooking forward to your reply and to have you soon as our new tenant<br />\r\n<br />\r\nBest regards<br />\r\nYour landlord, James Bond.",
+        "TypeName": null,
+        "DocumentList": [
+            {
+                "DocumentId": "a49998bc-2512-4ad0-8ffb-71d298d8cb43",
+                "DocumentName": "DloadXMLb64.docx",
+                "Order": 1,
+                "documentContentDetails": [
+                    {
+                        "ControlID": "a0215f88-188f-4692-b774-01c5ef152643",
+                        "ControlName": "emailControl",
+                        "ControlHtmlID": "emailControl38748",
+                        "GroupName": "",
+                        "Label": "Email",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl89731",
+                        "GroupName": "",
+                        "Label": "CustEntryText2",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                        "RoleName": "Administration",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "4df3b132-577a-4ddc-a067-0bb3ffd01e55",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl74745",
+                        "GroupName": "",
+                        "Label": "ContractNbr",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "c8263488-cbef-41ff-8f15-24fd95ffde6a",
+                        "ControlName": "nameControl",
+                        "ControlHtmlID": "nameControl14676",
+                        "GroupName": "",
+                        "Label": "Name",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "9ecb8bd8-0352-476d-9981-267da1d3f891",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl83669",
+                        "GroupName": "",
+                        "Label": "CustomerNbr",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl12293",
+                        "GroupName": "",
+                        "Label": "CustLongString2",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                        "RoleName": "Administration",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "30a80604-a4a5-471a-acdd-45cae6790b03",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl68907",
+                        "GroupName": "",
+                        "Label": "CustEntryText1",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                        "RoleName": "Administration",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "b6e7a14b-a764-4e9d-892a-622e24354cfd",
+                        "ControlName": "signControl",
+                        "ControlHtmlID": "signControl89139",
+                        "GroupName": "",
+                        "Label": "Signature",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                        "RoleName": "Administration",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "c6699983-650a-411c-ae66-7c67d6420eda",
+                        "ControlName": "radioControl",
+                        "ControlHtmlID": "radioControl19105",
+                        "GroupName": "Frequency",
+                        "Label": "Daily",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "false",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "b54eb008-ad68-4f9b-8ff5-815e62f9f4c7",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl93426",
+                        "GroupName": "",
+                        "Label": "Weekly",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "d7b9526b-0623-4779-9374-9839b25ca0b3",
+                        "ControlName": "dateTimeStampControl",
+                        "ControlHtmlID": "dateTimeStampControl35162",
+                        "GroupName": "",
+                        "Label": "Date & Time Stamp",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "8b9f98aa-1cd8-46cf-ad81-bf2cdc28afb1",
+                        "ControlName": "textControl",
+                        "ControlHtmlID": "textControl27508",
+                        "GroupName": "",
+                        "Label": "CustLongString1",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                        "RoleName": "Administration",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "28911b85-a2d6-4d8e-98c3-d3b0177cc709",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl71783",
+                        "GroupName": "",
+                        "Label": "Daily",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "902966d1-f54f-45d1-940a-daef47416b37",
+                        "ControlName": "DropDownControl",
+                        "ControlHtmlID": "DropDownControl12402",
+                        "GroupName": "",
+                        "Label": "Dropdown control assigned to Customer",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": [
+                            {
+                                "ID": "a4a1977d-8e05-47dc-9d7c-4ae6dfda3931",
+                                "OptionText": "Bear",
+                                "Order": 4
+                            },
+                            {
+                                "ID": "c707c2f6-658a-4018-97fc-6cbae9f6bb41",
+                                "OptionText": "Banana",
+                                "Order": 1
+                            },
+                            {
+                                "ID": "af5a8dad-c954-4dae-96c9-8a33807fe6da",
+                                "OptionText": "Bank",
+                                "Order": 3
+                            },
+                            {
+                                "ID": "388392b9-cfcc-4c7c-9995-9f1353a55e31",
+                                "OptionText": "Blue",
+                                "Order": 0
+                            },
+                            {
+                                "ID": "74baff7c-af9b-4060-99d3-a87cefa562d0",
+                                "OptionText": "Brasil",
+                                "Order": 2
+                            }
+                        ]
+                    },
+                    {
+                        "ControlID": "3206daa5-1b5f-4d12-8814-e0e13adc467f",
+                        "ControlName": "radioControl",
+                        "ControlHtmlID": "radioControl7048",
+                        "GroupName": "Frequency",
+                        "Label": "Monthly",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "false",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "3182091a-caa3-4d46-9e54-e21b1c41b27a",
+                        "ControlName": "radioControl",
+                        "ControlHtmlID": "radioControl42762",
+                        "GroupName": "Frequency",
+                        "Label": "Weekly",
+                        "PageNo": 1,
+                        "Required": false,
+                        "ControlValue": "false",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "84e07b2e-af93-4824-9fde-f0098e0ca4f6",
+                        "ControlName": "labelControl",
+                        "ControlHtmlID": "labelControl76679",
+                        "GroupName": "",
+                        "Label": "Monthly",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": null,
+                        "RoleName": null,
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "364835c1-0e43-4e36-9cfa-f514d5f744de",
+                        "ControlName": "signControl",
+                        "ControlHtmlID": "signControl57741",
+                        "GroupName": "",
+                        "Label": "Signature",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                        "RoleName": "Customer",
+                        "SelectControlOptions": []
+                    },
+                    {
+                        "ControlID": "8b32d647-3b75-486b-bbe0-fa9454477a37",
+                        "ControlName": "dateTimeStampControl",
+                        "ControlHtmlID": "dateTimeStampControl35986",
+                        "GroupName": "",
+                        "Label": "Date & Time Stamp",
+                        "PageNo": 1,
+                        "Required": true,
+                        "ControlValue": "",
+                        "RoleId": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                        "RoleName": "Administration",
+                        "SelectControlOptions": []
+                    }
+                ]
+            }
+        ],
+        "TemplateRoleList": [
+            {
+                "RoleID": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                "RoleName": "Administration",
+                "Order": 0,
+                "RecipientEmail": null,
+                "RecipientName": null,
+                "RecipientTypeID": "712f1a0b-1ac6-4013-8d74-aac4a9bf5568",
+                "RecipientID": null,
+                "RecipientType": null,
+                "CcSignerType": "0",
+                "CultureInfo": "en-us",
+                "DeliveryMode": null,
+                "DialCode": "",
+                "CountryCode": "",
+                "Mobile": null
+            },
+            {
+                "RoleID": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                "RoleName": "Customer",
+                "Order": 1,
+                "RecipientEmail": null,
+                "RecipientName": null,
+                "RecipientTypeID": "c20c350e-1c6d-4c03-9154-2cc688c099cb",
+                "RecipientID": null,
+                "RecipientType": null,
+                "CcSignerType": "0",
+                "CultureInfo": "en-us",
+                "DeliveryMode": null,
+                "DialCode": "",
+                "CountryCode": "",
+                "Mobile": null
+            }
+        ],
+        "EnableMessageToMobile": false,
+        "StaticLinkExpiryDate": null
+    },
+    "TemplateList": null
+}
