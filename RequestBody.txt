@@ -20,6 +20,3 @@
 {"ControlID": "b54eb008-ad68-4f9b-8ff5-815e62f9f4c7", "IsReadOnly": true, "ControlValue": "Neptune - 49\'526 km"},
 {"ControlID": "84e07b2e-af93-4824-9fde-f0098e0ca4f6", "IsReadOnly": true, "ControlValue": "Saturn - 116\'464 km"}
 ]}'
-
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
