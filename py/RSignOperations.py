@@ -212,6 +212,7 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
     data = {
         "TemplateCode": TemplateCode,
         "Subject": EmailSubject,
+        "PostSigningUrl": "https://www.frama.com/de-de/wichtige-informationen-zur-uebernahme-von-frama-durch-quadient",
         "SigningMethod": 0,
         "Documents": [
             {
@@ -248,25 +249,25 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
             "ControlValue": CustomerString, # CustLongString1
             },
             {
-            "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
+            "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
             "IsReadOnly": False,
-            "ControlValue": "Enter your text here", # CustLongString2
+            "ControlValue": "Enter your long text here", # CustLongString2
             },
             {
             "ControlID": "30a80604-a4a5-471a-acdd-45cae6790b03",
             "IsReadOnly": False,
-            "ControlValue": "Your text here", # CustEntryText1
+            "ControlValue": "Your text 1 here", # CustEntryText1
             },
             {
-            "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
+            "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
             "IsReadOnly": False,
-            "ControlValue": "You text here", # CustEntryText2
+            "ControlValue": "Your text 2 here", # CustEntryText2
             },
-            {
-            "ControlID": "902966d1-f54f-45d1-940a-daef47416b37",
-            "IsReadOnly": True,
-            "ControlValue": "What do you like?", # DropDownControl
-            },
+            # {
+            # "ControlID": "902966d1-f54f-45d1-940a-daef47416b37",
+            # "IsReadOnly": True,
+            # "ControlValue": "", # DropDownControl
+            # },
             {
             "ControlID": "c8263488-cbef-41ff-8f15-24fd95ffde6a",
             "IsReadOnly": True,
@@ -280,17 +281,17 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
             { # Radio button text
             "ControlID": "28911b85-a2d6-4d8e-98c3-d3b0177cc709",
             "IsReadOnly": True,
-            "ControlValue": "Earth - 12'756 km",
+            "ControlValue": "Daily Periodicity",
             },
             { # Radio button text
             "ControlID": "b54eb008-ad68-4f9b-8ff5-815e62f9f4c7",
             "IsReadOnly": True,
-            "ControlValue": "Neptune - 49'526 km",
+            "ControlValue": "Weekly Periodicity",
             },
             { # Radio button text
             "ControlID": "84e07b2e-af93-4824-9fde-f0098e0ca4f6",
             "IsReadOnly": True,
-            "ControlValue": "Saturn - 116'464 km",
+            "ControlValue": "Monthly Periodicity",
             },
         ]
     }
