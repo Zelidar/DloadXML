@@ -1,8 +1,7 @@
 import os
 import requests
-from py.myTestCompany import ReferenceKey, EmailId, Password
+from ToolKit.myAccessData import ReferenceKey, EmailId, Password, BaseURL
 
-BaseURL = 'https://api3.use.rsign.com'  # RSign Sandbox
 AuthenticateIUser = '/api/V1/Authentication/AuthenticateIUser'
 
 auth_token_file = 'MyAuthToken.txt'

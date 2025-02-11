@@ -2,7 +2,7 @@
 /~$oadXML.docx
 *.pyc
 __pycache__/
-myTestCompany.py
+myAccessData.py
 operation_log.txt
 DloadXML.from CRM.pdf
 DloadXML.from web.pdf
@@ -21,3 +21,8 @@ DloadXMLb64.b64
 MyAuthToken.txt
 operation_log.txt
 py/DloadXML.code-workspace
+ToolKit/myAccessData.Production.py
+ToolKit/myAccessData.Sandbox.py
+DloadXML.tws
+68550.TemplateControlsProduction.txt
+68550.TemplateInfo.txt
