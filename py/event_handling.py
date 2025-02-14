@@ -1,10 +1,10 @@
 from tkinter import messagebox  # Import messagebox explicitly
 from py.collecting_user_info import CollectedUserInfo
-from py.RSignOperations import GetUserData, GetEnvelopeStatus, SimCall, SendDynEnvelope, SendEnvelopeFromRule
+from py.RSignOperations import  GetUserData, GetEnvelopeStatus, SendEnvelopeFromRule
 from py.input_validation import UserInputValidator
 import threading
 import queue
-from py.FileLogging import log_message
+from py.FileLogging import logMsg
 
 validator = UserInputValidator()
 
@@ -21,8 +21,8 @@ def handle_submission(name,
        validator.validate_number(CustomerNbr):
 
         window_log.window_log_window(name, email, CustomerNbr, ContractNbr)
-        log_message(name)
-        log_message(email)
+        logMsg(name)
+        logMsg(email)
 
         result_queue = queue.Queue()
         # Run the send_email in a separate thread to avoid GUI freeze
