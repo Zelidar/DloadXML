@@ -3,8 +3,8 @@ import json
 import requests
 
 # Fetching my RPost API credentials and the RSign API sandbox URL
-from py.GettingRSignAuthToken import GetAuthToken, BaseURL
-
+from ToolKit.GettingRSignAuthToken import GetAuthToken
+from ToolKit.myAccessData import BaseURL, TemplateCode
 # Imports required to handle files i/o
 import base64
 import os
@@ -118,9 +118,9 @@ def LoadB64dataForRule():
             encoded_data = base64.b64encode(binary_data)
 
         with open(b64_template_file, 'wb') as file:
-            file.write(encoded_data) 
+            file.write(encoded_data)
 
-        return encoded_data.decode('utf-8')  
+        return encoded_data.decode('utf-8')
     
     else:
         print(f"Error! Template file {docx_template_file} not found.")
@@ -174,9 +174,9 @@ def SendEnvelopeFromTemplate(email, name):
     # The TemplateCode and the RoleID can be obtained using respectively
     # GetTemplateData() and GetTemplateInfo() implemented above.
     
-    TemplateCode = 62651    # This needs to correspond to the below RoleID
-    EmailSubject = "Here is your membership application"
-    RecipientRoleID = "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9"
+    EmailSubject = "Here is your application form to fill and sign"
+    # The below IDs must correspond to the selected template
+    RecipientRoleID = "64b87822-9730-431b-9bdc-61a4dda48e0d"
 
     data = {
         "TemplateCode": TemplateCode,
@@ -205,14 +205,15 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'
     }
-    TemplateCode = 65581  # This needs to correspond to the below RoleID and ControlId
-
-    EmailSubject = "Contract Document (sent from CRM)"
+    # The below IDs must correspond to the selected template
+    EmailSubject = "Here is your application form to fill and sign"
+    # The below IDs must correspond to the selected template
+    RecipientRoleID = "64b87822-9730-431b-9bdc-61a4dda48e0d"
 
     data = {
         "TemplateCode": TemplateCode,
         "Subject": EmailSubject,
-        "PostSigningUrl": "https://www.frama.com/de-de/wichtige-informationen-zur-uebernahme-von-frama-durch-quadient",
+        "PostSigningUrl": "https://www.frama.com/en/thank-you-page-esign/",
         "SigningMethod": 0,
         "Documents": [
             {
@@ -222,77 +223,57 @@ def SendEnvelopeFromRule(email, name, CustomerNbr, ContractNbr, CustomerString):
         ],
         "TemplateRoleRecipientMapping": [
             {
-                "RoleID": "27a6ea94-5900-45cc-8241-d9ba3e75dfc4",
+                "RoleID": RecipientRoleID,
                 "RecipientEmail": email,
                 "RecipientName": name,
             },
             {
-                "RoleID": "21bcca0b-b8ca-4a3c-bbcb-d43cbb9ca90b",
+                "RoleID": "57098f46-b072-482c-b57d-f101e93ca461",
                 "RecipientEmail": "zaid.el-hoiydi@frama.com",
                 "RecipientName": "Company Administration"
             }
             ],
             "UpdateControls": [
-            {
-            "ControlID": "9ecb8bd8-0352-476d-9981-267da1d3f891",
+            { # textControl
+            "ControlID": "73e28e4d-4a21-4c1b-9b5a-20145392a78b",
             "IsReadOnly": True,
             "ControlValue": CustomerNbr,
             },
-            {
-            "ControlID": "4df3b132-577a-4ddc-a067-0bb3ffd01e55",
+            { # textControl
+            "ControlID": "d4d9eb82-1d47-4da4-8b03-d8a6533abcd8",
             "IsReadOnly": True,
             "ControlValue": ContractNbr,
             },
-            {
-            "ControlID": "8b9f98aa-1cd8-46cf-ad81-bf2cdc28afb1",
+            { # textControl
+            "ControlID": "e9e78dc0-1c46-4ec2-882c-6c83c66a8923",
             "IsReadOnly": False,
             "ControlValue": CustomerString, # CustLongString1
             },
-            {
-            "ControlID": "08fed352-a2c1-4d55-998f-34d096ff876f",
+            { # textControl
+            "ControlID": "932fb5d4-1e49-4cb0-9115-26bb88ca8da6",
             "IsReadOnly": False,
             "ControlValue": "Enter your long text here", # CustLongString2
             },
-            {
-            "ControlID": "30a80604-a4a5-471a-acdd-45cae6790b03",
+            { # textControl
+            "ControlID": "f996e5fe-b61b-4a4c-a5b2-84ed152ef766",
             "IsReadOnly": False,
-            "ControlValue": "Your text 1 here", # CustEntryText1
+            "ControlValue": "Enter your text 1 here", # CustEntryText1
             },
-            {
-            "ControlID": "d8e6e3ea-063f-4c0d-bb87-01eff5ae50a2",
+            { # textControl
+            "ControlID": "455b6343-63d6-4d70-8482-2b12f82a0025",
             "IsReadOnly": False,
-            "ControlValue": "Your text 2 here", # CustEntryText2
+            "ControlValue": "Enter your text 2 here", # CustEntryText2
             },
-            # {
-            # "ControlID": "902966d1-f54f-45d1-940a-daef47416b37",
-            # "IsReadOnly": True,
-            # "ControlValue": "", # DropDownControl
-            # },
-            {
-            "ControlID": "c8263488-cbef-41ff-8f15-24fd95ffde6a",
+            { # nameControl
+            "ControlID": "58c00f2a-133a-4ac3-8cf3-8521af492bfa",
+            "IsReadOnly": False,
+            "ControlValue": name,
+            },
+            { #emailControl
+            "ControlID": "ad72a5a4-7d6c-426d-89b2-9ce51c49bf09",
             "IsReadOnly": True,
-            "ControlValue": name, # nameControl
-            },
-            {
-            "ControlID": "a0215f88-188f-4692-b774-01c5ef152643",
-            "IsReadOnly": True,
-            "ControlValue": email, #emailControl
-            },
-            { # Radio button text
-            "ControlID": "28911b85-a2d6-4d8e-98c3-d3b0177cc709",
-            "IsReadOnly": True,
-            "ControlValue": "Daily Periodicity",
-            },
-            { # Radio button text
-            "ControlID": "b54eb008-ad68-4f9b-8ff5-815e62f9f4c7",
-            "IsReadOnly": True,
-            "ControlValue": "Weekly Periodicity",
-            },
-            { # Radio button text
-            "ControlID": "84e07b2e-af93-4824-9fde-f0098e0ca4f6",
-            "IsReadOnly": True,
-            "ControlValue": "Monthly Periodicity",
-            },
+            "ControlValue": email,
+            }
         ]
     }
 

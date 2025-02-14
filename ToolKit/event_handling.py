@@ -1,10 +1,10 @@
 from tkinter import messagebox  # Import messagebox explicitly
-from py.collecting_user_info import CollectedUserInfo
-from py.RSignOperations import  GetUserData, GetEnvelopeStatus, SendEnvelopeFromRule
-from py.input_validation import UserInputValidator
+from ToolKit.collecting_user_info import CollectedUserInfo
+from ToolKit.RSignOperations import  GetUserData, GetEnvelopeStatus, SendEnvelopeFromRule
+from ToolKit.input_validation import UserInputValidator
 import threading
 import queue
-from py.FileLogging import logMsg
+from ToolKit.FileLogging import logMsg
 
 validator = UserInputValidator()
 
@@ -73,7 +73,6 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, window_log
         result_queue.put(None)
 
 
-
 def fetch_user_data(window_user_data, window_log, EnvelopeID):
     if EnvelopeID is None:  
         window_log.AddTextInWindowLog("(fetch_user_data) EnvelopeID is required. Did you create an envelope?")
@@ -83,17 +82,19 @@ def fetch_user_data(window_user_data, window_log, EnvelopeID):
             window_user_data.AddTextInWindowLog("EnvelopeID is required. Did you create an envelope?")
             return  # Exit the function if no EnvelopeID
         userElements = [
-            'CrmCustomerNbr',
-            'CrmContractNbr',
+            'Name',
+            'Email',
+            'CustomerNbr',
+            'ContractNbr',
             'CustLongString1',
             'CustLongString2',
             'CustEntryText1',
             'CustEntryText2',
-            'DropDownControl',
-            'Saturn',
-            'Uranus',
-            'Neptune',
-            'Earth'
+            'Dropdown control assigned to Customer &amp; Signer',
+            'Daily',
+            'Weekly',
+            'Monthly',
+            'Yearly'
         ]
         result = GetUserData(EnvelopeID, userElements)
         userInfoWindow = CollectedUserInfo(window_user_data)
